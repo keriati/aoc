@@ -1,4 +1,4 @@
-export function getElvWithMostCalories(input: string) {
+export const getTopCalories = (input: string) => {
   const inputArray = input.split("\n");
   const reduced = inputArray.reduce(
     (previousValue, currentValue) => {
@@ -27,6 +27,27 @@ export function getElvWithMostCalories(input: string) {
     { currentCalories: 0, currentElv: 1, mostCalories: 0, elvNumber: 0 }
   );
 
-  console.log(reduced);
-  return reduced.elvNumber;
-}
+  return reduced.mostCalories;
+};
+
+export const getTop3Calories = (input: string) => {
+  const inputArray = input.split("\n");
+
+  const reduced = inputArray.reduce(
+    (previousValue, currentValue) => {
+      if (currentValue === "") {
+        return [...previousValue, 0];
+      }
+
+      const currentCalorieValue = Number.parseInt(currentValue, 10);
+
+      const sumOfCalories = previousValue.pop() + currentCalorieValue;
+      return [...previousValue, sumOfCalories];
+    },
+    [0]
+  );
+
+  const sorted = reduced.sort((a, b) => b - a);
+
+  return sorted[0] + sorted[1] + sorted[2];
+};
