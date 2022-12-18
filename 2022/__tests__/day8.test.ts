@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getSmallestDirToDelete, getTotalSize } from "../day7";
 import { getBestScenicScore, getVisibleTreeCount } from "../day8";
 
 const testInput = `30373
