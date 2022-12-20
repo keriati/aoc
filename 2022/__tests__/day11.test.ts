@@ -3,7 +3,7 @@ import * as path from "path";
 import { getMonkeyBusiness } from "../day11";
 
 describe("Advent of Code", () => {
-  describe("Day 10", () => {
+  describe("Day 11", () => {
     it("returns monkey business from file1", () => {
       const input = fs.readFileSync(path.resolve(__dirname, "../day11_1.txt"), {
         encoding: "utf8",
