@@ -58,11 +58,11 @@ const getPaths = (map: string[][]) => {
   return paths;
 };
 
-function getMinSteps(
+const getMinSteps = (
   paths: Record<string, Set<string>>,
   startPosition: string,
   endPosition: string
-) {
+) => {
   const q: [string, number][] = [[startPosition, 0]];
   const visited = new Set(startPosition);
 
@@ -82,7 +82,7 @@ function getMinSteps(
   }
 
   return -1;
-}
+};
 
 export const getFewestSteps = (mapString: string) => {
   const map = mapString.split("\n").map((line) => line.split(""));
@@ -93,4 +93,23 @@ export const getFewestSteps = (mapString: string) => {
   const endPosition = Object.keys(paths).find((item) => item.endsWith("E"));
 
   return getMinSteps(paths, startPosition, endPosition);
+};
+
+export const getFewestStepsOfAll = (mapString: string) => {
+  const map = mapString.split("\n").map((line) => line.split(""));
+
+  const paths = getPaths(map);
+
+  const startPositions = Object.keys(paths).filter(
+    (item) => item.endsWith("S") || item.endsWith("a")
+  );
+
+  const endPosition = Object.keys(paths).find((item) => item.endsWith("E"));
+
+  const allSteps = startPositions
+    .map((startPosition) => getMinSteps(paths, startPosition, endPosition))
+    .filter((item) => item !== -1)
+    .sort((a, b) => a - b);
+
+  return allSteps[0];
 };
