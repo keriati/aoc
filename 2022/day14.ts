@@ -1,3 +1,4 @@
+/* eslint-disable no-continue */
 import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
@@ -90,7 +91,6 @@ export const getMap = (world: World) => {
 };
 
 function canMoveDown([x, y]: number[], world: World) {
-  const worldElement = world[`${x},${y + 1}`];
   return !["#", "o"].includes(world[`${x},${y + 1}`]);
 }
 
@@ -102,7 +102,7 @@ function canMoveRight([x, y]: number[], world: World) {
   return !["#", "o"].includes(world[`${x + 1},${y + 1}`]);
 }
 
-export const getSand = (input) => {
+export const getSandUnitsWithoutFloor = (input) => {
   const walls = input.split("\n");
   const world = getWorld(walls);
   const { endY } = getArea(world);
@@ -112,21 +112,77 @@ export const getSand = (input) => {
   let sandUnit = 0;
 
   while (!fellOff) {
+    if (sandPosition[1] > endY) {
+      fellOff = true;
+    }
+
     if (canMoveDown(sandPosition, world)) {
       sandPosition = [sandPosition[0], sandPosition[1] + 1];
-    } else if (canMoveLeft(sandPosition, world)) {
+      continue;
+    }
+
+    if (canMoveLeft(sandPosition, world)) {
       sandPosition = [sandPosition[0] - 1, sandPosition[1] + 1];
-    } else if (canMoveRight(sandPosition, world)) {
+      continue;
+    }
+
+    if (canMoveRight(sandPosition, world)) {
       sandPosition = [sandPosition[0] + 1, sandPosition[1] + 1];
-    } else {
+      continue;
+    }
+
+    world[`${sandPosition[0]},${sandPosition[1]}`] = "o";
+    sandPosition = [500, 0];
+    sandUnit += 1;
+  }
+
+  console.log(getMap(world));
+
+  return sandUnit;
+};
+
+export const getSandUnitsWithFloor = (input) => {
+  const walls = input.split("\n");
+  const world = getWorld(walls);
+  const { endY } = getArea(world);
+  const floor = endY + 2;
+
+  let entryBlocked = false;
+  let sandPosition = [500, 0];
+  let sandUnit = 0;
+
+  while (!entryBlocked) {
+    if (sandPosition[1] === floor - 1) {
       world[`${sandPosition[0]},${sandPosition[1]}`] = "o";
       sandPosition = [500, 0];
       sandUnit += 1;
     }
 
-    if (sandPosition[1] > endY) {
-      fellOff = true;
+    if (canMoveDown(sandPosition, world)) {
+      sandPosition = [sandPosition[0], sandPosition[1] + 1];
+      continue;
     }
+
+    if (canMoveLeft(sandPosition, world)) {
+      sandPosition = [sandPosition[0] - 1, sandPosition[1] + 1];
+      continue;
+    }
+
+    if (canMoveRight(sandPosition, world)) {
+      sandPosition = [sandPosition[0] + 1, sandPosition[1] + 1];
+      continue;
+    }
+
+    if (sandPosition[0] === 500 && sandPosition[1] === 0) {
+      world[`${sandPosition[0]},${sandPosition[1]}`] = "o";
+      sandUnit += 1;
+      entryBlocked = true;
+      continue;
+    }
+
+    world[`${sandPosition[0]},${sandPosition[1]}`] = "o";
+    sandPosition = [500, 0];
+    sandUnit += 1;
   }
 
   console.log(getMap(world));
