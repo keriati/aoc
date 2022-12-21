@@ -1,6 +1,11 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getSand, getWorld, getMap } from "../day14";
+import {
+  getSandUnitsWithoutFloor,
+  getWorld,
+  getMap,
+  getSandUnitsWithFloor,
+} from "../day14";
 
 const input = `498,4 -> 498,6 -> 496,6
 503,4 -> 502,4 -> 502,9 -> 494,9`;
@@ -41,16 +46,16 @@ describe("Advent of Code", () => {
 
       expect(map).toBe(
         "\n" +
-          "0 ..........\n" +
-          "1 ..........\n" +
-          "2 ..........\n" +
-          "3 ..........\n" +
-          "4 ....#...##\n" +
-          "5 ....#...#.\n" +
-          "6 ..###...#.\n" +
-          "7 ........#.\n" +
-          "8 ........#.\n" +
-          "9 #########."
+          "$          \n" +
+          "$          \n" +
+          "$          \n" +
+          "$          \n" +
+          "$    #   ##\n" +
+          "$    #   # \n" +
+          "$  ###   # \n" +
+          "$        # \n" +
+          "$        # \n" +
+          "$######### "
       );
     });
 
@@ -71,7 +76,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns the number of units of sand", () => {
-      const actual = getSand(input);
+      const actual = getSandUnitsWithoutFloor(input);
 
       expect(actual).toEqual(24);
     });
@@ -85,9 +90,29 @@ describe("Advent of Code", () => {
         }
       );
 
-      const actual = getSand(fileInput);
+      const actual = getSandUnitsWithoutFloor(fileInput);
 
       expect(actual).toEqual(805);
+    });
+
+    it("returns the number of units of sand when floor is present", () => {
+      const actual = getSandUnitsWithFloor(input);
+
+      expect(actual).toEqual(93);
+    });
+
+    it("returns the number of units of sand when floor is present - file input", () => {
+      const fileInput = fs.readFileSync(
+        path.resolve(__dirname, "../day14.txt"),
+        {
+          encoding: "utf8",
+          flag: "r",
+        }
+      );
+
+      const actual = getSandUnitsWithFloor(fileInput);
+
+      expect(actual).toEqual(25161);
     });
   });
 });
