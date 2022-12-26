@@ -2,8 +2,6 @@ import * as fs from "fs";
 import * as path from "path";
 import { getBasementStep, getFloorNumber } from "../day1";
 
-const testInput = ``;
-
 describe("Advent of Code 2015", () => {
   describe("Day 1", () => {
     it("should return the floor number", () => {
