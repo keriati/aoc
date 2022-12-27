@@ -41,15 +41,15 @@ class Gate {
 class Circuit {
   private elements: CircuitElement = {};
 
-  build(instructions: string[]) {
+  constructor(instructions: string[]) {
     instructions.forEach((instruction) => {
       const [value, key] = instruction.split(" -> ");
 
-      this.elements[key] = Circuit.getGate(value);
+      this.elements[key] = Circuit.createGate(value);
     });
   }
 
-  private static getGate(value: string): Gate {
+  private static createGate(value: string): Gate {
     if (value.includes("AND")) {
       const deps = value.split(" AND ");
       return new Gate("AND", deps);
@@ -121,11 +121,7 @@ class Circuit {
 export const getSignal = (input, wire) => {
   const instructions = input.split("\n");
 
-  const circuit = new Circuit();
-
-  circuit.build(instructions);
-
-  circuit.getSignal(wire);
+  const circuit = new Circuit(instructions);
 
   return circuit.getSignal(wire);
 };

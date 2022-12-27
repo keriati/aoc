@@ -32,5 +32,17 @@ NOT y -> i`;
 
       expect(actual).toBe(46065);
     });
+
+    it("returns the signal on wire a when overriding wire b - file input", () => {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day7.txt"), {
+        encoding: "utf8",
+        flag: "r",
+      });
+      const bOverride = input.replaceAll("1674", "46065");
+
+      const actual = getSignal(bOverride, "a");
+
+      expect(actual).toBe(14134);
+    });
   });
 });
