@@ -3,7 +3,7 @@ import * as path from "path";
 import { getHouseCount, getHouseCountWithRobot } from "../day3";
 
 describe("Advent of Code 2015", () => {
-  describe("Day 3", () => {
+  describe("Day 3: Perfectly Spherical Houses in a Vacuum", () => {
     it("returns the number of houses", () => {
       const actual = getHouseCount("^>v<");
 
