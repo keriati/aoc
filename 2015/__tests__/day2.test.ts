@@ -4,38 +4,38 @@ import { getLength, getSquareFeet } from "../day2";
 
 describe("Advent of Code 2015", () => {
   describe("Day 2", () => {
-    it("should return the required square feet", () => {
-      const topCalories = getSquareFeet("2x3x4");
+    it("returns the required square feet", () => {
+      const actual = getSquareFeet("2x3x4");
 
-      expect(topCalories).toBe(58);
+      expect(actual).toBe(58);
     });
 
-    it("should return the required square feet - from file", () => {
+    it("returns the required square feet - from file", () => {
       const input = fs.readFileSync(path.resolve(__dirname, "../day2.txt"), {
         encoding: "utf8",
         flag: "r",
       });
 
-      const topCalories = getSquareFeet(input);
+      const actual = getSquareFeet(input);
 
-      expect(topCalories).toBe(1598415);
+      expect(actual).toBe(1598415);
     });
 
-    it("should return the required length of ribbon", () => {
-      const topCalories = getLength("2x3x4");
+    it("returns the required length of ribbon", () => {
+      const actual = getLength("2x3x4");
 
-      expect(topCalories).toBe(34);
+      expect(actual).toBe(34);
     });
 
-    it("should return the required length of ribbon - from file", () => {
+    it("returns the required length of ribbon - from file", () => {
       const input = fs.readFileSync(path.resolve(__dirname, "../day2.txt"), {
         encoding: "utf8",
         flag: "r",
       });
 
-      const topCalories = getLength(input);
+      const actual = getLength(input);
 
-      expect(topCalories).toBe(3812909);
+      expect(actual).toBe(3812909);
     });
   });
 });

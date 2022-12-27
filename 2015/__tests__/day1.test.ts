@@ -10,15 +10,15 @@ describe("Advent of Code 2015", () => {
         flag: "r",
       });
 
-      const topCalories = getFloorNumber(input);
+      const actual = getFloorNumber(input);
 
-      expect(topCalories).toBe(74);
+      expect(actual).toBe(74);
     });
 
     it("should return the step number when entering basement", () => {
-      const topCalories = getBasementStep("()())");
+      const actual = getBasementStep("()())");
 
-      expect(topCalories).toBe(5);
+      expect(actual).toBe(5);
     });
 
     it("should return the step number when entering basement - file input", () => {
@@ -27,9 +27,9 @@ describe("Advent of Code 2015", () => {
         flag: "r",
       });
 
-      const topCalories = getBasementStep(input);
+      const actual = getBasementStep(input);
 
-      expect(topCalories).toBe(1795);
+      expect(actual).toBe(1795);
     });
   });
 });
