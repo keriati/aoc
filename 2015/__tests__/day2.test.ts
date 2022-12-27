@@ -3,7 +3,7 @@ import * as path from "path";
 import { getLength, getSquareFeet } from "../day2";
 
 describe("Advent of Code 2015", () => {
-  describe("Day 2", () => {
+  describe("Day 2: I Was Told There Would Be No Math", () => {
     it("returns the required square feet", () => {
       const actual = getSquareFeet("2x3x4");
 

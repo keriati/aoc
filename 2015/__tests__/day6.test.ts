@@ -3,7 +3,7 @@ import * as path from "path";
 import { getLitLights, getTotalBrightness } from "../day6";
 
 describe("Advent of Code 2015", () => {
-  describe("Day 6", () => {
+  describe("Day 6: Probably a Fire Hazard", () => {
     it("returns the number of lit lights 1", () => {
       const input = `turn on 0,0 through 999,999`;
 
