@@ -19,4 +19,4 @@ touch "$year/day$day.txt";
 touch "$year/__tests__/day$day.test.ts";
 
 cat template.day.ts | sed s/'$day'/$day/g > $year/day$day.ts
-cat template.test.ts | sed s/'$day'/$day/g > $year/__tests__/day$day.test.ts
+cat template.test.ts | sed s/'$day'/$day/g | sed s/'$year'/$year/g > $year/__tests__/day$day.test.ts
