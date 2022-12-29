@@ -71,7 +71,7 @@ describe("Advent of Code", () => {
 
       const map = getMap(world);
 
-      console.log(map);
+      // console.log(map);
       expect(map).toHaveLength(10206);
     });
 

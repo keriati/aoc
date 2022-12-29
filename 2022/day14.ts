@@ -136,7 +136,7 @@ export const getSandUnitsWithoutFloor = (input) => {
     sandUnit += 1;
   }
 
-  console.log(getMap(world));
+  // console.log(getMap(world));
 
   return sandUnit;
 };
@@ -185,7 +185,7 @@ export const getSandUnitsWithFloor = (input) => {
     sandUnit += 1;
   }
 
-  console.log(getMap(world));
+  // console.log(getMap(world));
 
   return sandUnit;
 };
