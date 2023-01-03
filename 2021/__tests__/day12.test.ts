@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult } from "../day12";
+import { getResult, getResultPart2 } from "../day12";
 
 describe("Advent of Code 2021", () => {
   describe("Day 12: Passage Pathing", () => {
@@ -67,5 +67,45 @@ start-RW`;
 
       expect(actual).toBe(5212);
     });
+
+    it("returns the result part 2", () => {
+      const input = `start-A
+start-b
+A-c
+A-b
+b-d
+A-end
+b-end`;
+      const actual = getResultPart2(input);
+
+      expect(actual).toBe(36);
+    });
+  });
+
+  it("returns the result part 2 2", () => {
+    const input = `dc-end
+HN-start
+start-kj
+dc-start
+dc-HN
+LN-dc
+HN-end
+kj-sa
+kj-HN
+kj-dc`;
+    const actual = getResultPart2(input);
+
+    expect(actual).toBe(103);
+  });
+
+  it("returns the result part 2 - file input", () => {
+    const input = fs.readFileSync(path.resolve(__dirname, "../day12.txt"), {
+      encoding: "utf8",
+      flag: "r",
+    });
+
+    const actual = getResultPart2(input);
+
+    expect(actual).toBe(134862);
   });
 });
