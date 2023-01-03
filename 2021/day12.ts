@@ -11,13 +11,29 @@ class CaveMap {
     });
   }
 
-  getPaths(source = "start", destination = "end", visited = []) {
+  getSmallCaves() {
+    return Array.from(this.graph.keys()).filter(
+      (cave) =>
+        cave.toLowerCase() === cave && cave !== "start" && cave !== "end"
+    );
+  }
+
+  getPaths(
+    source = "start",
+    destination = "end",
+    visited = [],
+    canVisitTwice = null
+  ) {
     if (source === destination) {
       return 1;
     }
 
     if (visited.includes(source)) {
-      return 0;
+      if (source === canVisitTwice) {
+        canVisitTwice = null;
+      } else {
+        return 0;
+      }
     }
 
     const newVisited =
@@ -26,7 +42,7 @@ class CaveMap {
     let paths = 0;
     // eslint-disable-next-line no-restricted-syntax
     for (const neighbour of this.graph.get(source)) {
-      paths += this.getPaths(neighbour, destination, newVisited);
+      paths += this.getPaths(neighbour, destination, newVisited, canVisitTwice);
     }
 
     return paths;
@@ -37,4 +53,20 @@ export const getResult = (input) => {
   const myMap = new CaveMap(input);
 
   return myMap.getPaths();
+};
+
+export const getResultPart2 = (input) => {
+  const myMap = new CaveMap(input);
+
+  const smallCaves = myMap.getSmallCaves();
+
+  const basePaths = myMap.getPaths();
+
+  let paths = 0;
+
+  smallCaves.forEach((cave) => {
+    paths += myMap.getPaths("start", "end", [], cave);
+  });
+
+  return paths - basePaths * (smallCaves.length - 1);
 };
