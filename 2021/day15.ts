@@ -1,5 +1,7 @@
 /* eslint-disable class-methods-use-this,no-restricted-syntax */
-class HeapArray {
+import Heap from "heap-js";
+
+class PriorityQueue {
   items: [number, number, number][] = [];
 
   push(item: [number, number, number]) {
@@ -23,8 +25,10 @@ const neighbours = [
   [-1, 0],
 ];
 
-class CaveMap {
+export class CaveMap {
   cave: number[][] = [];
+
+  private increased = 1;
 
   constructor(input) {
     input.split("\n").forEach((row, y) => {
@@ -35,15 +39,38 @@ class CaveMap {
     });
   }
 
+  increase(times = 5) {
+    this.increased = times;
+  }
+
+  getSize() {
+    return this.cave.length * this.increased;
+  }
+
+  getRisk([x, y]): number {
+    if (x < this.cave.length && y < this.cave.length) {
+      return this.cave[y][x];
+    }
+
+    const rounds =
+      Math.floor(x / this.cave.length) + Math.floor(y / this.cave.length);
+
+    const originalVal = this.cave[y % this.cave.length][x % this.cave.length];
+
+    return originalVal + rounds <= 9
+      ? originalVal + rounds
+      : (originalVal + rounds) % (Math.floor((originalVal + rounds) / 9) * 9);
+  }
+
   getLowestRiskPathSum() {
     const costMap = new Map<string, number>();
-    const myHeap = this.getHeap();
+    const q = this.getPriorityQueue();
     const visited = new Set<string>();
 
-    myHeap.push([0, 0, 0]);
+    q.push([0, 0, 0]);
 
-    while (myHeap.size() > 0) {
-      const [x, y, risk] = myHeap.pop();
+    while (q.size() > 0) {
+      const [x, y, risk] = q.pop();
 
       const pos = `${x},${y}`;
 
@@ -52,35 +79,38 @@ class CaveMap {
 
       costMap.set(pos, risk);
 
-      if (y === this.cave.length - 1 && x === this.cave[0].length - 1) {
+      if (y === this.getSize() - 1 && x === this.getSize() - 1) {
         break;
       }
 
       for (const [dx, dy] of neighbours) {
         const nx = x + dx;
         const ny = y + dy;
-        if (
-          nx < 0 ||
-          nx >= this.cave.length ||
-          ny < 0 ||
-          ny >= this.cave.length
-        )
+        if (nx < 0 || nx >= this.getSize() || ny < 0 || ny >= this.getSize())
           continue;
 
-        myHeap.push([nx, ny, this.cave[ny][nx] + risk]);
+        q.push([nx, ny, this.getRisk([nx, ny]) + risk]);
       }
     }
 
-    return costMap.get(`${this.cave.length - 1},${this.cave.length - 1}`);
+    return costMap.get(`${this.getSize() - 1},${this.getSize() - 1}`);
   }
 
-  private getHeap() {
-    return new HeapArray();
+  private getPriorityQueue() {
+    return new Heap<[number, number, number]>((a, b) => a[2] - b[2]);
   }
 }
 
 export const getResult = (input) => {
   const myMap = new CaveMap(input);
+
+  return myMap.getLowestRiskPathSum();
+};
+
+export const getResultPart2 = (input) => {
+  const myMap = new CaveMap(input);
+
+  myMap.increase(5);
 
   return myMap.getLowestRiskPathSum();
 };
