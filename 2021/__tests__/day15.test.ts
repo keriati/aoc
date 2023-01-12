@@ -26,9 +26,7 @@ describe("Advent of Code 2021", () => {
         flag: "r",
       });
 
-      const myDate = Date.now();
       const actual = getResult(input);
-      console.log(Date.now() - myDate);
 
       expect(actual).toBe(656);
     });
@@ -79,9 +77,7 @@ describe("Advent of Code 2021", () => {
         flag: "r",
       });
 
-      const myDate = Date.now();
       const actual = getResultPart2(input);
-      console.log(Date.now() - myDate);
 
       expect(actual).toBe(2979);
     });

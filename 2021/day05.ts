@@ -1,6 +1,3 @@
-/* eslint-disable no-nested-ternary */
-
-// eslint-disable-next-line max-classes-per-file
 class Vent {
   public readonly start: [number, number];
 

@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { countNice, countNicer, isNice, isNicer } from "../day5";
+import { countNice, countNicer, isNice, isNicer } from "../day05";
 
 describe("Advent of Code 2015", () => {
   describe("Day 5: Doesn't He Have Intern-Elves For This?", () => {
@@ -35,7 +35,7 @@ describe("Advent of Code 2015", () => {
     });
 
     it("returns the number of nice strings - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day5.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day05.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -70,7 +70,7 @@ describe("Advent of Code 2015", () => {
     });
 
     it("returns the number of nicer strings - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day5.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day05.txt"), {
         encoding: "utf8",
         flag: "r",
       });

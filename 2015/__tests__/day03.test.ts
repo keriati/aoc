@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getHouseCount, getHouseCountWithRobot } from "../day3";
+import { getHouseCount, getHouseCountWithRobot } from "../day03";
 
 describe("Advent of Code 2015", () => {
   describe("Day 3: Perfectly Spherical Houses in a Vacuum", () => {
@@ -11,7 +11,7 @@ describe("Advent of Code 2015", () => {
     });
 
     it("returns the number of houses - from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day3.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day03.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -34,7 +34,7 @@ describe("Advent of Code 2015", () => {
     });
 
     it("returns the number of houses when with robot - from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day3.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day03.txt"), {
         encoding: "utf8",
         flag: "r",
       });

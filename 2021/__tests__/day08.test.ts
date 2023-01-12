@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult, getResultPart2 } from "../day8";
+import { getResult, getResultPart2 } from "../day08";
 
 describe("Advent of Code 2021", () => {
   describe("Day 8", () => {
@@ -21,7 +21,7 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
     });
 
     it("returns the result - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day8.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day08.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -55,7 +55,7 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
     });
 
     it("returns the result part 2 - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day8.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day08.txt"), {
         encoding: "utf8",
         flag: "r",
       });

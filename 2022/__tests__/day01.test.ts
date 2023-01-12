@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getTop3Calories, getTopCalories } from "../day1";
+import { getTop3Calories, getTopCalories } from "../day01";
 
 const testInput = `1000
 2000
@@ -26,7 +26,7 @@ describe("Advent of Code", () => {
     });
 
     it("should return the elv number with most calories", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day1.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day01.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -43,7 +43,7 @@ describe("Advent of Code", () => {
     });
 
     it("should return the elv number with most calories", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day1.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day01.txt"), {
         encoding: "utf8",
         flag: "r",
       });

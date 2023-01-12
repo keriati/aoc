@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 class Consortium {
   octopuses: number[][] = [];
 

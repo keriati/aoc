@@ -1,4 +1,4 @@
-import { getHashNumber } from "../day4";
+import { getHashNumber } from "../day04";
 
 describe("Advent of Code 2015", () => {
   describe("Day 4: The Ideal Stocking Stuffer", () => {

@@ -24,6 +24,12 @@ module.exports = {
   rules: {
     "import/prefer-default-export": "off",
     "no-param-reassign": "off",
-    "@typescript-eslint/no-unused-vars": "off"
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "no-bitwise": "off",
+    "max-classes-per-file": "off",
+    "no-nested-ternary": "off",
+    "no-restricted-syntax": "off",
+    "no-plusplus": "off",
   },
 };

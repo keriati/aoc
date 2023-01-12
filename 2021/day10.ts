@@ -1,4 +1,3 @@
-/* eslint-disable */
 const pairs = new Map([
   ["(", ")"],
   ["[", "]"],
@@ -54,7 +53,7 @@ export const getResult = (input) => {
 
 const getMissingChars = (line: string) => {
   const chars = [];
-  let missingChars = [];
+  const missingChars = [];
 
   for (let i = 0; i < line.length; i += 1) {
     const lineChar = line[i];
@@ -69,7 +68,7 @@ const getMissingChars = (line: string) => {
   }
 
   if (missingChars.length > 0) {
-    return;
+    return null;
   }
 
   return [...chars.map((char) => pairs.get(char)).reverse()];

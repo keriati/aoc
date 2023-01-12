@@ -1,11 +1,11 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getBasementStep, getFloorNumber } from "../day1";
+import { getBasementStep, getFloorNumber } from "../day01";
 
 describe("Advent of Code 2015", () => {
   describe("Day 1: Not Quite Lisp", () => {
     it("returns the floor number", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day1.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day01.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -22,7 +22,7 @@ describe("Advent of Code 2015", () => {
     });
 
     it("returns the step number when entering basement - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day1.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day01.txt"), {
         encoding: "utf8",
         flag: "r",
       });

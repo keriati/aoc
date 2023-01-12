@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getIncreases, getIncreasesWithWindow } from "../day1";
+import { getIncreases, getIncreasesWithWindow } from "../day01";
 
 describe("Advent of Code 2021", () => {
   describe("Day 1: Sonar Sweep", () => {
@@ -21,7 +21,7 @@ describe("Advent of Code 2021", () => {
     });
 
     it("returns the increases in the measurement - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day1.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day01.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -48,7 +48,7 @@ describe("Advent of Code 2021", () => {
     });
 
     it("returns the increases in the measurement - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day1.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day01.txt"), {
         encoding: "utf8",
         flag: "r",
       });

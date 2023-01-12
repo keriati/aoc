@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getGroupPriorities, getPriorities } from "../day3";
+import { getGroupPriorities, getPriorities } from "../day03";
 
 const testInput = `vJrwpWtwJgWrhcsFMMfFFhFp
 jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
@@ -18,7 +18,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns the priorities from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day3.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day03.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -35,7 +35,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns the group priorities from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day3.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day03.txt"), {
         encoding: "utf8",
         flag: "r",
       });

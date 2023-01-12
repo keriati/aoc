@@ -4,7 +4,11 @@
   "description": "Advent Of Code Solutions by Me",
   "scripts": {
     "lint": "eslint",
-    "test": "jest"
+    "test": "jest --no-cache",
+    "test:2015": "jest 2015",
+    "test:2021": "jest 2021",
+    "test:2022": "jest 2022",
+    "run201515": "ts-node ./2022/day15.run.ts"
   },
   "author": "Attila Kerekes",
   "license": "MIT",
@@ -18,7 +22,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.1",
-    "jest": "^27.3.1",
+    "jest": "^27.5.1",
     "prettier": "^2.5.1",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.8.1",

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 export const getHouseCount = (input) => {
   const steps = input.split("");
 
@@ -22,7 +21,6 @@ export const getHouseCount = (input) => {
   return visited.size;
 };
 
-/* eslint-disable @typescript-eslint/no-shadow */
 export const getHouseCountWithRobot = (input) => {
   const steps = input.split("");
 

@@ -1,5 +1,3 @@
-/* eslint-disable no-bitwise */
-// eslint-disable-next-line max-classes-per-file
 type CircuitElement = Record<string, Gate>;
 type Gates = "AND" | "OR" | "NOT" | "RSHIFT" | "LSHIFT" | "SIGNAL" | "WIRE";
 

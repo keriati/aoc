@@ -4,7 +4,7 @@ import {
   getNumberOfPositionsVisited,
   getNumberOfPositionsVisitedLong,
   Knot,
-} from "../day9";
+} from "../day09";
 
 const testInput = `R 4
 U 4
@@ -33,7 +33,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns number of visited positions from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day9.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day09.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -56,7 +56,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns number of visited positions when long from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day9.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day09.txt"), {
         encoding: "utf8",
         flag: "r",
       });

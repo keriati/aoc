@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getLitLights, getTotalBrightness } from "../day6";
+import { getLitLights, getTotalBrightness } from "../day06";
 
 describe("Advent of Code 2015", () => {
   describe("Day 6: Probably a Fire Hazard", () => {
@@ -39,7 +39,7 @@ turn off 499,499 through 500,500`;
     });
 
     it("returns the number of lit lights - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day6.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day06.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -50,7 +50,7 @@ turn off 499,499 through 500,500`;
     });
 
     it("returns the total brightness of lit lights - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day6.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day06.txt"), {
         encoding: "utf8",
         flag: "r",
       });

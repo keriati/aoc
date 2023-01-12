@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getBestScenicScore, getVisibleTreeCount } from "../day8";
+import { getBestScenicScore, getVisibleTreeCount } from "../day08";
 
 const testInput = `30373
 25512
@@ -17,7 +17,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns number of visible trees from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day8.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day08.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -34,7 +34,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns the best scenic score from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day8.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day08.txt"), {
         encoding: "utf8",
         flag: "r",
       });

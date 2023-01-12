@@ -1,4 +1,3 @@
-/* eslint-disable */
 const getZeroBitCounts = (reports: string[]) =>
   reports.reduce((state, report) => {
     report.split("").forEach((bit, i) => {
@@ -63,7 +62,7 @@ const getMostCommonBit = (lines: string[], index: number) => {
   return one >= zero ? 1 : 0;
 };
 
-const getRating = (lines: string[], bit: string, round: number = 0) => {
+const getRating = (lines: string[], bit: string, round = 0) => {
   if (lines.length === 1) {
     return lines[0];
   }
@@ -92,7 +91,7 @@ const getScrubberRating = (lines: string[]) => {
 };
 
 export const getResultPart2 = (input) => {
-  let lines = input.split("\n");
+  const lines = input.split("\n");
 
   const oxygenRating = getOxygenRating(lines);
   const scrubberRating = getScrubberRating(lines);

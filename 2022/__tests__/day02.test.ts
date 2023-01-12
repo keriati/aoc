@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getScore, getScore2 } from "../day2";
+import { getScore, getScore2 } from "../day02";
 
 const testInput = `A Y
 B X
@@ -15,7 +15,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns your score file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day2.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day02.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -32,7 +32,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns your score 2 file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day2.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day02.txt"), {
         encoding: "utf8",
         flag: "r",
       });
