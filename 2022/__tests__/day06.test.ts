@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getMessageStart, getSignalStart } from "../day6";
+import { getMessageStart, getSignalStart } from "../day06";
 
 const testInput = `mjqjpqmgbljsphdztnvjfqwrcgsmlb
 bvwbjplbgvbhsrlpgdmjqwftvncz
@@ -17,7 +17,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns number of character from signal start from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day6.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day06.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -34,7 +34,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns number of character from message start from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day6.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day06.txt"), {
         encoding: "utf8",
         flag: "r",
       });

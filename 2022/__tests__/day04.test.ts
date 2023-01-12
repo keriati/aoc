@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getOverlapping, getOverlappingFull } from "../day4";
+import { getOverlapping, getOverlappingFull } from "../day04";
 
 const testInput = `2-4,6-8
 2-3,4-5
@@ -18,7 +18,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns the number of fully overlapping section assignments from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day4.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day04.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -35,7 +35,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns the number of overlapping section assignments from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day4.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day04.txt"), {
         encoding: "utf8",
         flag: "r",
       });

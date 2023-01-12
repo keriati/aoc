@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getSmallestDirToDelete, getTotalSize } from "../day7";
+import { getSmallestDirToDelete, getTotalSize } from "../day07";
 
 const testInput = `$ cd /
 $ ls
@@ -35,7 +35,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns total size of directories from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day7.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day07.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -52,7 +52,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns smallest directory size to delete from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day7.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day07.txt"), {
         encoding: "utf8",
         flag: "r",
       });

@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getLength, getSquareFeet } from "../day2";
+import { getLength, getSquareFeet } from "../day02";
 
 describe("Advent of Code 2015", () => {
   describe("Day 2: I Was Told There Would Be No Math", () => {
@@ -11,7 +11,7 @@ describe("Advent of Code 2015", () => {
     });
 
     it("returns the required square feet - from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day2.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day02.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -28,7 +28,7 @@ describe("Advent of Code 2015", () => {
     });
 
     it("returns the required length of ribbon - from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day2.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day02.txt"), {
         encoding: "utf8",
         flag: "r",
       });

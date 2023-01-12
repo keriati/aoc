@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getSignal } from "../day7";
+import { getSignal } from "../day07";
 
 describe("Advent of Code 2015", () => {
   describe("Day 7: Some Assembly Required", () => {
@@ -23,7 +23,7 @@ NOT y -> i`;
     });
 
     it("returns the signal on wire a - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day7.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day07.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -34,7 +34,7 @@ NOT y -> i`;
     });
 
     it("returns the signal on wire a when overriding wire b - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day7.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day07.txt"), {
         encoding: "utf8",
         flag: "r",
       });

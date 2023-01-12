@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getTopCrates, getTopCratesCM9001 } from "../day5";
+import { getTopCrates, getTopCratesCM9001 } from "../day05";
 
 const stackString = ["ZN", "MCD", "P"];
 
@@ -41,7 +41,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns top crates when using CrateMover 9000 from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day5.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day05.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -58,7 +58,7 @@ describe("Advent of Code", () => {
     });
 
     it("returns top crates when using CrateMover 9001 from file", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day5.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day05.txt"), {
         encoding: "utf8",
         flag: "r",
       });

@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax,no-continue */
-// eslint-disable-next-line max-classes-per-file
 class PIRules {
   rules = new Map<string, string>();
 
@@ -32,6 +30,7 @@ class Polymer {
   doPairInsertion() {
     const newParts = new Map<string, number>();
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const [part, amount] of this.parts) {
       const newChar = this.rules.get(part);
       const part1 = `${part[0]}${newChar}`;

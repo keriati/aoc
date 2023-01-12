@@ -1,4 +1,3 @@
-/* eslint-disable */
 export const getResult = (input, constantRate = true) => {
   const crabPositionsString = input.split(",");
 
@@ -16,7 +15,7 @@ export const getResult = (input, constantRate = true) => {
     [0, 0]
   );
 
-  let positionDistances = [];
+  const positionDistances = [];
 
   for (let pos = min; pos <= max; pos += 1) {
     let cost = 0;

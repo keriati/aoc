@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getPosition, getPositionAlt } from "../day2";
+import { getPosition, getPositionAlt } from "../day02";
 
 describe("Advent of Code 2021", () => {
   describe("Day 2: Dive!", () => {
@@ -17,7 +17,7 @@ forward 2`;
     });
 
     it("returns final position - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day2.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day02.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -40,7 +40,7 @@ forward 2`;
     });
 
     it("returns final position part 2 - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day2.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day02.txt"), {
         encoding: "utf8",
         flag: "r",
       });

@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult, getResultPart2 } from "../day3";
+import { getResult, getResultPart2 } from "../day03";
 
 describe("Advent of Code 2021", () => {
   describe("Day 3: Binary Diagnostic", () => {
@@ -23,7 +23,7 @@ describe("Advent of Code 2021", () => {
     });
 
     it("returns gamma rate * epsilon rate - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day3.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day03.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -52,7 +52,7 @@ describe("Advent of Code 2021", () => {
     });
 
     it("returns oxygen rate * scrubber rate - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day3.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day03.txt"), {
         encoding: "utf8",
         flag: "r",
       });

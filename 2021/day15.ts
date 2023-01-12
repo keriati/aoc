@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this,no-restricted-syntax */
 import Heap from "heap-js";
 
 class PriorityQueue {

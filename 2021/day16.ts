@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-
 type PacketTree = [number, string, PacketTree[]?][];
 
 const GROUP_SIZE = 5;

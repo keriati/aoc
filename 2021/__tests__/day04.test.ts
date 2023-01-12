@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult, getResultPart2 } from "../day4";
+import { getResult, getResultPart2 } from "../day04";
 
 describe("Advent of Code 2021", () => {
   describe("Day 4: Giant Squid", () => {
@@ -30,7 +30,7 @@ describe("Advent of Code 2021", () => {
     });
 
     it("returns the result - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day4.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day04.txt"), {
         encoding: "utf8",
         flag: "r",
       });
@@ -66,7 +66,7 @@ describe("Advent of Code 2021", () => {
     });
 
     it("returns the result part 2 - file input", () => {
-      const input = fs.readFileSync(path.resolve(__dirname, "../day4.txt"), {
+      const input = fs.readFileSync(path.resolve(__dirname, "../day04.txt"), {
         encoding: "utf8",
         flag: "r",
       });
