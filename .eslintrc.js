@@ -31,5 +31,6 @@ module.exports = {
     "no-nested-ternary": "off",
     "no-restricted-syntax": "off",
     "no-plusplus": "off",
+    "class-methods-use-this": "off",
   },
 };
