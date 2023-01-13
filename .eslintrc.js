@@ -32,5 +32,6 @@ module.exports = {
     "no-restricted-syntax": "off",
     "no-plusplus": "off",
     "class-methods-use-this": "off",
+    "no-eval": "off",
   },
 };
