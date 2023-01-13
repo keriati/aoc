@@ -75,7 +75,7 @@ export const fireProbe = (
 
 export const getHighestShot = (target: Area) => {
   const results = [];
-  const [[xs, ys], [xe, ye]] = target;
+  const [, [xe, ye]] = target;
 
   for (let x = 0; x <= xe; x++) {
     for (let y = ye; y < xe; y++) {
