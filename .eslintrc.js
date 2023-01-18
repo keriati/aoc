@@ -33,5 +33,6 @@ module.exports = {
     "no-plusplus": "off",
     "class-methods-use-this": "off",
     "no-eval": "off",
+    "no-continue": "off",
   },
 };
