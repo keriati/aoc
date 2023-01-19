@@ -6,6 +6,11 @@
     "lint": "eslint",
     "test": "jest --no-cache",
     "test:2015": "jest 2015",
+    "test:2016": "jest 2016",
+    "test:2017": "jest 2017",
+    "test:2018": "jest 2018",
+    "test:2019": "jest 2019",
+    "test:2020": "jest 2020",
     "test:2021": "jest 2021",
     "test:2022": "jest 2022",
     "run201515": "ts-node ./2022/day15.run.ts"
