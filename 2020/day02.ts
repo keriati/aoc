@@ -13,7 +13,7 @@ export const isValid = (password: string, policy: string) => {
   return minOccurrence <= occurrence && occurrence <= maxOccurrence;
 };
 
-export const getResult = (input) => {
+export const getValidPasswords = (input) => {
   const lines = input.split("\n");
 
   return lines.reduce((sum, line) => {
@@ -22,7 +22,7 @@ export const getResult = (input) => {
   }, 0);
 };
 
-export const isValid2 = (password: string, policy: string) => {
+export const isValidTobogan = (password: string, policy: string) => {
   const [, pos1S, pos2S, policyLetter] = policy.match(/(\d+)-(\d+) (\w)/);
   const pos1 = parseInt(pos1S, 10);
   const pos2 = parseInt(pos2S, 10);
@@ -34,11 +34,11 @@ export const isValid2 = (password: string, policy: string) => {
   return occurrence === 1;
 };
 
-export const getResult2 = (input) => {
+export const getValidTobogganPasswords = (input) => {
   const lines = input.split("\n");
 
   return lines.reduce((sum, line) => {
     const [policy, password] = line.split(": ");
-    return isValid2(password, policy) ? sum + 1 : sum;
+    return isValidTobogan(password, policy) ? sum + 1 : sum;
   }, 0);
 };
