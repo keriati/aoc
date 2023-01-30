@@ -3,7 +3,7 @@ import * as path from "path";
 import { getFuelRequired, getTotalFuelRequired } from "../day01";
 
 describe("Advent of Code 2019", () => {
-  describe("Day 01", () => {
+  describe("Day 01: The Tyranny of the Rocket Equation", () => {
     it("returns the fuel required", () => {
       expect(getFuelRequired("12")).toBe(2);
       expect(getFuelRequired("14")).toBe(2);
