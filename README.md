@@ -5,6 +5,17 @@ All solutions are implemented in TypeScript and executed against Jest tests.
 
 The starting input for the puzzles is usually stored in dayXX.txt files.
 
+## Progress
+
+    [2015]: 10 *
+    [2016]:  1 *
+    [2017]:  1 *
+    [2018]:  1 *
+    [2019]:  2 *
+    [2020]:  7 *
+    [2021]: 17 *
+    [2022]: 16 *
+
 ## Running tasks:
 
 To run all tests use:

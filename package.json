@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "eslint",
     "test": "jest --no-cache",
+    "update-stats": "ts-node updateStats.ts",
     "test:2015": "jest 2015",
     "test:2016": "jest 2016",
     "test:2017": "jest 2017",
