@@ -4,9 +4,8 @@ import { readdirSync, readFileSync, writeFileSync } from "fs";
 const YEAR_START = 2015;
 const YEAR_END = 2022;
 
-const updateStats = () => {
+const getStats = () => {
   const complete = {};
-  let result = "";
 
   for (let year = YEAR_START; year <= YEAR_END; year++) {
     complete[year] = [];
@@ -16,15 +15,7 @@ const updateStats = () => {
       }
     });
   }
-
-  for (const year in complete) {
-    result += `    [${year}]: ${`${complete[year].length}`.padStart(
-      2,
-      " "
-    )} *\n`;
-  }
-
-  return result;
+  return complete;
 };
 
 const main = () => {
@@ -33,10 +24,22 @@ const main = () => {
     flag: "r",
   });
 
-  const stats = updateStats().split("\n");
+  const stats = getStats();
+  const statsText = [];
+  let starsTotal = 0;
+
+  for (const year in stats) {
+    const stars = stats[year].length * 2;
+    starsTotal += stars;
+    statsText.push(`    [${year}]: ${`${stars}`.padStart(2, " ")}*`);
+  }
+
+  statsText.reverse();
+  statsText.push("");
+  statsText.push(`    Total stars: ${starsTotal}*`);
 
   const updatedReadme = readme.split("\n");
-  updatedReadme.splice(9, stats.length, ...stats);
+  updatedReadme.splice(9, statsText.length, ...statsText);
 
   writeFileSync(
     path.resolve(__dirname, "README.md"),
