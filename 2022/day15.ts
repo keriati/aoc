@@ -1,4 +1,3 @@
-/* eslint-disable no-continue */
 type Position = [number, number];
 
 class SensorBeaconPair {
