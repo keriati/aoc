@@ -3,7 +3,7 @@ import * as path from "path";
 import { getHighestSeatID, getMySeatID } from "../day05";
 
 describe("Advent of Code 2020", () => {
-  describe("Day 05 Binary Boarding", () => {
+  describe("Day 05: Binary Boarding", () => {
     it("returns the highest seat id", () => {
       expect(getHighestSeatID(`FBFBBFFRLR`)).toBe(357);
       expect(getHighestSeatID(`BFFFBBFRRR`)).toBe(567);

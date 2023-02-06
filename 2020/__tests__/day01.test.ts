@@ -10,7 +10,7 @@ const input = `1721
 1456`;
 
 describe("Advent of Code 2020", () => {
-  describe("Day 01 Report Repair", () => {
+  describe("Day 01: Report Repair", () => {
     it("returns the result", () => {
       const actual = getResult(input);
 

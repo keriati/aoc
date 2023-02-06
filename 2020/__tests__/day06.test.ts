@@ -19,7 +19,7 @@ a
 b`;
 
 describe("Advent of Code 2020", () => {
-  describe("Day 06 Custom Customs", () => {
+  describe("Day 06: Custom Customs", () => {
     it("returns the number of questions anyone answered with yes", () => {
       const actual = getAnyYesCount(input);
 
