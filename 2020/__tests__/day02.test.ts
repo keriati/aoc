@@ -8,7 +8,7 @@ import {
 } from "../day02";
 
 describe("Advent of Code 2020", () => {
-  describe("Day 02 Password Philosophy", () => {
+  describe("Day 02: Password Philosophy", () => {
     it("returns whether the password is valid or not", () => {
       expect(isValid("abcde", "1-3 a")).toBe(true);
       expect(isValid("cdefg", "1-3 b")).toBe(false);

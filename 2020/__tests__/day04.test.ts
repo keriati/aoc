@@ -44,7 +44,7 @@ eyr:2022
 iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719`;
 
 describe("Advent of Code 2020", () => {
-  describe("Day 04 Passport Processing", () => {
+  describe("Day 04: Passport Processing", () => {
     it("returns the number of valid passports", () => {
       const actual = getValidPassports(input);
 

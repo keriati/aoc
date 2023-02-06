@@ -15,7 +15,7 @@ const input = `..##.......
 .#..#...#.#`;
 
 describe("Advent of Code 2020", () => {
-  describe("Day 03 Toboggan Trajectory", () => {
+  describe("Day 03: Toboggan Trajectory", () => {
     it("returns the number of trees on the slope", () => {
       const actual = getNumberOfTrees(input);
 
