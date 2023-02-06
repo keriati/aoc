@@ -1,7 +1,7 @@
 {
   "name": "Advent Of Code Solutions",
   "version": "1.0.0",
-  "description": "Advent Of Code Solutions by Me",
+  "description": "Advent Of Code Solutions in TypeScript",
   "scripts": {
     "lint": "eslint",
     "test": "jest --no-cache",
