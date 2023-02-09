@@ -1,5 +1,5 @@
 {
-  "name": "Advent Of Code Solutions",
+  "name": "advent-of-code-typescript",
   "version": "1.0.0",
   "description": "Advent Of Code Solutions in TypeScript",
   "scripts": {
