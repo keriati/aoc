@@ -3,7 +3,7 @@ import * as path from "path";
 import { getDistance, getDistanceToTwiceVisited } from "../day01";
 
 describe("Advent of Code 2016", () => {
-  describe("Day 01", () => {
+  describe("Day 01: No Time for a Taxicab", () => {
     it("returns the distance", () => {
       expect(getDistance(`R2, L3`)).toBe(5);
       expect(getDistance(`R2, R2, R2`)).toBe(2);
