@@ -3,7 +3,7 @@ import * as path from "path";
 import { getMatchingDigitSum, getHalfwayMatchingDigitSum } from "../day01";
 
 describe("Advent of Code 2017", () => {
-  describe("Day 01", () => {
+  describe("Day 01: Inverse Captcha", () => {
     it("returns the sum of of all digits that match the next digit in the list", () => {
       const input = fs.readFileSync(path.resolve(__dirname, "../day01.txt"), {
         encoding: "utf8",
