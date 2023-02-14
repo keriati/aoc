@@ -1,34 +1,37 @@
-const runCode = (
-  noun: number,
-  verb: number,
-  instructions: number[]
-): number => {
-  const ins = [...instructions];
+const OPCODE_ADD = 1;
+const OPCODE_MULTI = 2;
 
-  ins[1] = noun;
-  ins[2] = verb;
+const run = (intCodes: number[], noun: number, verb: number): number[] => {
+  const program = [...intCodes];
 
-  let com = ins[0];
+  program[1] = noun;
+  program[2] = verb;
 
-  for (let i = 0; com !== 99; i += 4) {
-    if (com === 1) {
-      ins[ins[i + 3]] = ins[ins[i + 1]] + ins[ins[i + 2]];
+  let opcode = program[0];
+
+  for (let i = 0; opcode !== 99; i += 4) {
+    const arg1 = program[program[i + 1]];
+    const arg2 = program[program[i + 2]];
+    const outPosition = program[i + 3];
+
+    if (OPCODE_ADD === opcode) {
+      program[outPosition] = arg1 + arg2;
     }
 
-    if (com === 2) {
-      ins[ins[i + 3]] = ins[ins[i + 1]] * ins[ins[i + 2]];
+    if (OPCODE_MULTI === opcode) {
+      program[outPosition] = arg1 * arg2;
     }
 
-    com = ins[i + 4];
+    opcode = program[i + 4];
   }
 
-  return ins[0];
+  return program;
 };
 
 export const getProgramValue = (input: string): number => {
   const data = input.split(",").map((c) => parseInt(c, 10));
 
-  return runCode(12, 2, data);
+  return run(data, 12, 2)[0];
 };
 
 export const findParams = (input: string): number | null => {
@@ -36,7 +39,7 @@ export const findParams = (input: string): number | null => {
 
   for (let a = 0; a <= 99; a++) {
     for (let b = 0; b <= 99; b++) {
-      if (runCode(a, b, data) === 19690720) {
+      if (run(data, a, b)[0] === 19690720) {
         return 100 * a + b;
       }
     }
