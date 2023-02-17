@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 export const getResult = (input: string): string => {
   const parentNodes = new Set<string>();
   const childrenNodes = new Set<string>();
@@ -17,10 +18,10 @@ export const getResult = (input: string): string => {
   throw new Error("Not found");
 };
 
-const getUnbalanced = (children: any[]) => {
+const getUnbalanced = (children: Continue[]) => {
   const weightValues: Map<number, number> = children.reduce((values, child) => {
-    if (!values.has(child[1])) values.set(child[1], 0);
-    values.set(child[1], values.get(child[1]) + 1);
+    if (!values.has(child.value[1])) values.set(child.value[1], 0);
+    values.set(child.value[1], values.get(child.value[1]) + 1);
 
     return values;
   }, new Map<number, number>());
@@ -31,20 +32,33 @@ const getUnbalanced = (children: any[]) => {
   return { outlier, balanced };
 };
 
-const throwOutlier = (
+type Continue = { tag: "continue"; value: [string, number] };
+type Finish = { tag: "finish"; value: number };
+
+type OutlierResult = Continue | Finish;
+
+const findUnbalanced = (
   nodes: Map<string, [number, string[]]>,
   position: string
-) => {
+): OutlierResult => {
   const current = nodes.get(position);
 
   if (current[1].length === 0) {
-    return [position, current[0]];
+    return { tag: "continue", value: [position, current[0]] };
   }
 
-  const disks = [];
+  const disks: Continue[] = [];
 
   for (const child of current[1]) {
-    disks.push(throwOutlier(nodes, child));
+    const disk = findUnbalanced(nodes, child);
+
+    switch (disk.tag) {
+      case "continue":
+        disks.push(disk);
+        break;
+      case "finish":
+        return disk;
+    }
   }
 
   if (disks.length > 2) {
@@ -53,13 +67,21 @@ const throwOutlier = (
     if (typeof outlier !== "undefined") {
       const weightDifference = outlier[0] - balanced[0];
 
-      const outlierNode = nodes.get(disks.find(([, v]) => v === outlier[0])[0]);
+      const outlierNode = nodes.get(
+        disks.find(({ value: [, v] }) => v === outlier[0]).value[0]
+      );
 
-      throw outlierNode[0] - weightDifference;
+      return { tag: "finish", value: outlierNode[0] - weightDifference };
     }
   }
 
-  return [position, current[0] + disks.reduce((s, [, n]) => s + n, 0)];
+  return {
+    tag: "continue",
+    value: [
+      position,
+      current[0] + disks.reduce((s, { value: [, n] }) => s + n, 0),
+    ],
+  };
 };
 
 export const getResult2 = (input: string, root) => {
@@ -74,11 +96,5 @@ export const getResult2 = (input: string, root) => {
     return nodes;
   }, new Map<string, [number, string[]]>());
 
-  try {
-    throwOutlier(nodes, root);
-  } catch (e) {
-    return e;
-  }
-
-  return null;
+  return findUnbalanced(nodes, root).value;
 };

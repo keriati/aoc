@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult, getResult2 } from "../day07";
+import { getStepOrder, getAssemblyTime } from "../day07";
 
 const input = `Step C must be finished before step A can begin.
 Step C must be finished before step F can begin.
@@ -13,7 +13,7 @@ Step F must be finished before step E can begin.`;
 describe("Advent of Code 2018", () => {
   describe("Day 07: The Sum of Its Parts", () => {
     it("returns the order of steps", () => {
-      const actual = getResult(input);
+      const actual = getStepOrder(input);
 
       expect(actual).toBe("CABDFE");
     });
@@ -24,13 +24,13 @@ describe("Advent of Code 2018", () => {
         flag: "r",
       });
 
-      const actual = getResult(input);
+      const actual = getStepOrder(input);
 
       expect(actual).toBe("BGKDMJCNEQRSTUZWHYLPAFIVXO");
     });
 
     it("returns the time needed for assembly", () => {
-      const actual = getResult2(input, 2, 0);
+      const actual = getAssemblyTime(input, 2, 0);
 
       expect(actual).toBe(15);
     });
@@ -41,7 +41,7 @@ describe("Advent of Code 2018", () => {
         flag: "r",
       });
 
-      const actual = getResult2(input, 5, 60);
+      const actual = getAssemblyTime(input, 5, 60);
 
       expect(actual).toBe(941);
     });

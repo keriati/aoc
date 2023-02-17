@@ -35,7 +35,7 @@ class Probe {
     this.pos = [x + vx, y + vy];
     this.velocity = [this.getNewVelocityX(vx), vy - 1];
 
-    this.stepsNext++;
+    this.steps++;
   }
 
   isInTarget() {

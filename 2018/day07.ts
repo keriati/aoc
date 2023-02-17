@@ -32,7 +32,7 @@ const getStepsReady = (stepsNext, stepsPrev) => {
   return stepsReady;
 };
 
-export const getResult = (input) => {
+export const getStepOrder = (input) => {
   const { stepsNext, stepsPrev } = parseInput(input);
   let stepsReady = getStepsReady(stepsNext, stepsPrev);
 
@@ -82,7 +82,7 @@ export const getResult = (input) => {
 const updateWorkers = (workers: [string, number][]) =>
   workers.map(([step, time]) => [step, --time]);
 
-export const getResult2 = (input, wc, t) => {
+export const getAssemblyTime = (input, wc, t) => {
   const { stepsNext, stepsPrev } = parseInput(input);
   const stepsReady = getStepsReady(stepsNext, stepsPrev);
 
