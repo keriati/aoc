@@ -14,7 +14,7 @@ const getPermutations = (items: string[]): string[][] => {
   return allPermutations;
 };
 
-export const getResult = (input): [number, number] => {
+export const getShortestRoute = (input): [number, number] => {
   const lines = input.split("\n");
   const paths = new Map<string, number>();
   const places = new Set<string>();

@@ -26,7 +26,7 @@ const getCorners = (points: Point[]) => {
   ];
 };
 
-export const getResult = (input) => {
+export const getLargestAreaSize = (input) => {
   const points = parsePoints(input);
 
   const [[sx, sy], [ex, ey]] = getCorners(points);
@@ -61,7 +61,7 @@ export const getResult = (input) => {
   return Array.from(areas.values()).reduce((max, n) => (n > max ? n : max), 0);
 };
 
-export const getResult2 = (input, maxDistance) => {
+export const getSafeAreaSize = (input, maxDistance) => {
   const points = parsePoints(input);
 
   const [[sx, sy], [ex, ey]] = getCorners(points);

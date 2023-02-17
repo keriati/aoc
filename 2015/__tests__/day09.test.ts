@@ -1,14 +1,14 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult } from "../day09";
+import { getShortestRoute } from "../day09";
 
 describe("Advent of Code 2015", () => {
-  describe("Day 09", () => {
+  describe("Day 09: All in a Single Night", () => {
     it("returns the result", () => {
       const input = `London to Dublin = 464
 London to Belfast = 518
 Dublin to Belfast = 141`;
-      const actual = getResult(input);
+      const actual = getShortestRoute(input);
 
       expect(actual[0]).toBe(605);
     });
@@ -19,7 +19,7 @@ Dublin to Belfast = 141`;
         flag: "r",
       });
 
-      const actual = getResult(input);
+      const actual = getShortestRoute(input);
 
       expect(actual[0]).toBe(207);
     });
@@ -30,7 +30,7 @@ Dublin to Belfast = 141`;
         flag: "r",
       });
 
-      const actual = getResult(input);
+      const actual = getShortestRoute(input);
 
       expect(actual[1]).toBe(804);
     });

@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult, getResult2 } from "../day06";
+import { getLargestAreaSize, getSafeAreaSize } from "../day06";
 
 describe("Advent of Code 2018", () => {
   describe("Day 06: Chronal Coordinates", () => {
@@ -11,7 +11,7 @@ describe("Advent of Code 2018", () => {
 3, 4
 5, 5
 8, 9`;
-      const actual = getResult(input);
+      const actual = getLargestAreaSize(input);
 
       expect(actual).toBe(17);
     });
@@ -22,7 +22,7 @@ describe("Advent of Code 2018", () => {
         flag: "r",
       });
 
-      const actual = getResult(input);
+      const actual = getLargestAreaSize(input);
 
       expect(actual).toBe(5941);
     });
@@ -34,7 +34,7 @@ describe("Advent of Code 2018", () => {
 3, 4
 5, 5
 8, 9`;
-      const actual = getResult2(input, 32);
+      const actual = getSafeAreaSize(input, 32);
 
       expect(actual).toBe(16);
     });
@@ -45,7 +45,7 @@ describe("Advent of Code 2018", () => {
         flag: "r",
       });
 
-      const actual = getResult2(input, 10000);
+      const actual = getSafeAreaSize(input, 10000);
 
       expect(actual).toBe(40244);
     });

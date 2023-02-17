@@ -1,11 +1,11 @@
-export const getResult = (input) =>
+export const getFrequency = (input) =>
   input.split("\n").reduce((sum, change) => {
     const [, dir, numS] = change.match(/([+-])(\d+)/);
     const num = parseInt(numS, 10);
     return dir === "+" ? sum + num : sum - num;
   }, 0);
 
-export const getResult2 = (input) => {
+export const getFrequencyTwice = (input) => {
   const frequencies = new Set();
   let frequency = 0;
 

@@ -35,7 +35,7 @@ describe("Advent of Code 2016", () => {
 
       const actual = getMessageMostCommon(input);
 
-      expect(actual).toBe(0);
+      expect(actual).toBe("gyvwpxaz");
     });
 
     it("returns the messages based on least common characters - file input", () => {
@@ -46,7 +46,7 @@ describe("Advent of Code 2016", () => {
 
       const actual = getMessageLeastCommon(input);
 
-      expect(actual).toBe(0);
+      expect(actual).toBe("jucfoary");
     });
   });
 });
