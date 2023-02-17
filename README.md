@@ -10,13 +10,13 @@ The starting input for the puzzles is usually stored in dayXX.txt files.
     [2022]: 32*
     [2021]: 34*
     [2020]: 34*
-    [2019]: 10*
+    [2019]: 12*
     [2018]: 14*
     [2017]: 14*
     [2016]: 14*
     [2015]: 20*
 
-    Total stars: 172*
+    Total stars: 174*
 
 ## Running tasks:
 
