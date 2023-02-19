@@ -61,7 +61,7 @@ const handleMultiply = (
   return [newProgram, pointer + 4];
 };
 
-const run = (intCodes: number[], input: number): number[] => {
+export const run = (intCodes: number[], input: number[]): number[] => {
   let program = [...intCodes];
   const output = [];
 
@@ -75,7 +75,7 @@ const run = (intCodes: number[], input: number): number[] => {
     if (isOpcode(opcode, OPCODE_INPUT)) {
       const outPosition = program[pointer + 1];
 
-      program[outPosition] = input;
+      program[outPosition] = input.shift();
       pointer += 2;
       continue;
     }
@@ -140,7 +140,7 @@ const run = (intCodes: number[], input: number): number[] => {
   return output;
 };
 
-export const getResult = (input, param) => {
+export const getResult = (input: string, param: number[]) => {
   const intCodes = input.split(",").map((c) => Number(c));
 
   return run(intCodes, param);
