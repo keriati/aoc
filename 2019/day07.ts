@@ -1,4 +1,4 @@
-import { IntCodeComputer } from "./IntCode";
+import { IntCodeComputer } from "./IntCode07";
 
 const getPermutations = (items: number[]): number[][] => {
   if (items.length === 0) return [[]];
