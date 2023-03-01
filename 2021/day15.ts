@@ -1,4 +1,5 @@
 import Heap from "heap-js";
+import { mk2n } from "../util/utils";
 
 class PriorityQueue {
   items: [number, number, number][] = [];
@@ -62,21 +63,21 @@ export class CaveMap {
   }
 
   getLowestRiskPathSum() {
-    const costMap = new Map<string, number>();
+    const costMap = new Map<number, number>();
     const q = this.getPriorityQueue();
-    const visited = new Set<string>();
+    const visited = new Set<number>();
 
     q.push([0, 0, 0]);
 
     while (q.size() > 0) {
       const [x, y, risk] = q.pop();
 
-      const pos = `${x},${y}`;
+      const pos = mk2n(x, y);
 
       if (visited.has(pos)) continue;
       visited.add(pos);
 
-      costMap.set(pos, risk);
+      costMap.set(mk2n(x, y), risk);
 
       if (y === this.getSize() - 1 && x === this.getSize() - 1) {
         break;
@@ -92,7 +93,7 @@ export class CaveMap {
       }
     }
 
-    return costMap.get(`${this.getSize() - 1},${this.getSize() - 1}`);
+    return costMap.get(mk2n(this.getSize() - 1, this.getSize() - 1));
   }
 
   private getPriorityQueue() {
