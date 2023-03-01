@@ -5,7 +5,7 @@ import {
 } from "../day11";
 
 describe("Advent of Code 2018", () => {
-  describe("Day 11", () => {
+  describe("Day 11: Chronal Charge", () => {
     it("returns the result", () => {
       expect(getPowerLevel(122, 79, 57)).toBe(-5);
       expect(getPowerLevel(217, 196, 39)).toBe(0);
