@@ -13,6 +13,37 @@ export const defaultDict = (init) =>
 export const ABC_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const ABC_LOWER = "abcdefghijklmnopqrstuvwxyz";
 
+export const createCombinations = <T>(items: T[], length): T[][] => {
+  if (items.length < length) return [];
+
+  if (length === 0) return [[]];
+
+  const first = items[0];
+  const combosWithFirst = [];
+  for (const combo of createCombinations(items.slice(1), length - 1)) {
+    combosWithFirst.push([first, ...combo]);
+  }
+
+  const combosWithoutFirst = createCombinations(items.slice(1), length);
+  return [...combosWithFirst, ...combosWithoutFirst];
+};
+
+export function range(start, stop?, step = 1) {
+  if (stop === undefined) {
+    // one param defined
+    stop = start;
+    start = 0;
+  }
+
+  const result = [];
+
+  for (let i = start; step > 0 ? i < stop : i > stop; i += step) {
+    result.push(i);
+  }
+
+  return result;
+}
+
 const p1 = 311;
 const p2 = 997;
 
@@ -62,3 +93,17 @@ export const umk2ns = (z: number): [number, number] => {
 
   return [xx, yy];
 };
+
+export const intAHash = (nums: number[]) => {
+  const h = 0;
+  let result = 0;
+  for (let i = 0; i < nums.length; i++) {
+    result += h * 487 + nums[i];
+  }
+
+  return result;
+};
+
+export const gcd = (a, b) => (a ? gcd(b % a, a) : b);
+
+export const lcm = (a, b) => (a * b) / gcd(a, b);
