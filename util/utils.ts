@@ -95,10 +95,11 @@ export const umk2ns = (z: number): [number, number] => {
 };
 
 export const intAHash = (nums: number[]) => {
-  const h = 0;
+  let h = 0;
   let result = 0;
   for (let i = 0; i < nums.length; i++) {
-    result += h * 487 + nums[i];
+    result += h * 31 + nums[i];
+    h++;
   }
 
   return result;
