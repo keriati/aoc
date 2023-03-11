@@ -13,6 +13,22 @@ export const defaultDict = (init) =>
 export const ABC_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const ABC_LOWER = "abcdefghijklmnopqrstuvwxyz";
 
+export const createPermutations = (items: string[]): string[][] => {
+  if (items.length === 0) return [[]];
+
+  const first = items[0];
+
+  const allPermutations = [];
+
+  for (const perm of createPermutations(items.slice(1))) {
+    for (let i = 0; i <= perm.length; i++) {
+      allPermutations.push([...perm.slice(0, i), first, ...perm.slice(i)]);
+    }
+  }
+
+  return allPermutations;
+};
+
 export const createCombinations = <T>(items: T[], length): T[][] => {
   if (items.length < length) return [];
 
