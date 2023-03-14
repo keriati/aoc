@@ -13,6 +13,12 @@ export const defaultDict = (init) =>
 export const ABC_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const ABC_LOWER = "abcdefghijklmnopqrstuvwxyz";
 
+export const hexToBin = (hex: string): string =>
+  hex
+    .split("")
+    .map((h) => parseInt(h, 16).toString(2).padStart(4, "0"))
+    .join("");
+
 export const createPermutations = (items: string[]): string[][] => {
   if (items.length === 0) return [[]];
 
