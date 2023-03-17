@@ -7,11 +7,11 @@ The starting input for the puzzles is usually stored in dayXX.txt files.
 
 ## Progress
 
-    [2022]: 32*
+    [2022]: 30*
     [2021]: 34*
     [2020]: 34*
     [2019]: 30*
-    [2018]: 28*
+    [2018]: 30*
     [2017]: 30*
     [2016]: 30*
     [2015]: 30*
