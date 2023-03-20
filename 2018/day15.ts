@@ -207,7 +207,7 @@ class Combat {
 
     console.clear();
     console.log(`\n${buf.flat(2).join("")}`);
-    console.log(scores.join("\n"));
+    // console.log(scores.join("\n"));
     console.log(`Rounds: ${this.rounds}`);
     console.log(`Score: ${this.getScore()}`);
   }
