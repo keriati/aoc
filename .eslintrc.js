@@ -34,5 +34,6 @@ module.exports = {
     "class-methods-use-this": "off",
     "no-eval": "off",
     "no-continue": "off",
+    "prefer-const": "off",
   },
 };
