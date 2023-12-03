@@ -1,4 +1,4 @@
-export const defaultDict = (init) =>
+export const defaultDict = (Init) =>
   new Proxy(
     {},
     {
@@ -6,7 +6,7 @@ export const defaultDict = (init) =>
         name in target
           ? target[name]
           : (target[name] =
-              typeof init === "function" ? new init().valueOf() : init),
+              typeof Init === "function" ? new Init().valueOf() : Init),
     }
   );
 
@@ -19,6 +19,11 @@ export const hexToBin = (hex: string): string =>
     .map((h) => parseInt(h, 16).toString(2).padStart(4, "0"))
     .join("");
 
+/**
+ * Returns the permutations of items
+ *
+ * @param items
+ */
 export const createPermutations = (items: string[]): string[][] => {
   if (items.length === 0) return [[]];
 
@@ -35,6 +40,12 @@ export const createPermutations = (items: string[]): string[][] => {
   return allPermutations;
 };
 
+/**
+ * Returns all combinations of length from items
+ *
+ * @param items
+ * @param length
+ */
 export const createCombinations = <T>(items: T[], length): T[][] => {
   if (items.length < length) return [];
 
@@ -50,6 +61,13 @@ export const createCombinations = <T>(items: T[], length): T[][] => {
   return [...combosWithFirst, ...combosWithoutFirst];
 };
 
+/**
+ * Returns an array of numbers from start to stop with step
+ *
+ * @param start
+ * @param stop
+ * @param step
+ */
 export function range(start, stop?, step = 1) {
   if (stop === undefined) {
     // one param defined
@@ -116,6 +134,11 @@ export const umk2ns = (z: number): [number, number] => {
   return [xx, yy];
 };
 
+/**
+ * Returns a unique integer (as key) from multiple unsigned integers
+ *
+ * @param nums
+ */
 export const intAHash = (nums: number[]) => {
   let h = 0;
   let result = 0;
@@ -127,6 +150,18 @@ export const intAHash = (nums: number[]) => {
   return result;
 };
 
+/**
+ * Returns the greatest common divisor of 2 numbers
+ *
+ * @param a
+ * @param b
+ */
 export const gcd = (a, b) => (a ? gcd(b % a, a) : b);
 
+/**
+ * Returns the least common multiple of 2 numbers
+ *
+ * @param a
+ * @param b
+ */
 export const lcm = (a, b) => (a * b) / gcd(a, b);
