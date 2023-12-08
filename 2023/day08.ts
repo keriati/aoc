@@ -84,30 +84,50 @@ const printAsSlotMachine = (
   console.clear();
 
   const content = [];
-  const linePrev = `┃     [${prevPositions.join("] [")}]     ┃`;
-  const line = `┃    >[${positions.join("] [")}]<    ┃`;
-  const lineNext = `┃     [${nextPositions.join("] [")}]     ┃`;
-  let winLine = `┃                                             ┃`;
+  const linePrev = `   ┃     ┃${prevPositions.join("┃ ┃")}┃     ┃┣━━┛ ┃`;
+  const line = `   ┃    >┃\x1b[97m${positions.join(
+    "\x1b[0m┃ ┃\x1b[97m"
+  )}\x1b[0m┃<    ┃┣━━━━┛`;
+  const lineNext = `   ┃     ┃${nextPositions.join("┃ ┃")}┃     ┣┛`;
+  let winLine = `┃                   All Z Jackpot!                   ┃`;
 
   if (win !== 0) {
-    winLine = `┃          You won ${win} $!          ┃`;
+    winLine = `┃            You win ${win} steps!           ┃`;
   }
 
-  content.push(`       ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓`);
-  content.push(`       ┃        AoC 2023 Day 08        ┃`);
-  content.push(`┏━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━┓`);
-  content.push(`┃                                             ┃`);
-  content.push(`┃                                             ┃`);
+  content.push(`                    \x1b[31mO O O O O O O\x1b[0m`);
+  content.push(`          ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓`);
+  content.push(`          ┃        AoC 2023 Day 08        ┃`);
+  content.push(
+    `   ┏━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━┓  \x1b[31m┏━━━┓\x1b[0m`
+  );
+  content.push(
+    `   ┃                                             ┃  \x1b[31m┃   ┃\x1b[0m`
+  );
+  content.push(
+    `   ┃                                             ┃  \x1b[31m┗┳━┳┛\x1b[0m`
+  );
+  content.push(`   ┃                                             ┃   ┃ ┃`);
+  content.push(`   ┃     ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓     ┣┓  ┃ ┃`);
   content.push(linePrev);
   content.push(line);
   content.push(lineNext);
-  content.push(`┃                                             ┃`);
-  content.push(`┃                                             ┃`);
-  content.push(`┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫`);
-  content.push(`┃                                             ┃`);
+  content.push(`   ┃     ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛     ┃`);
+  content.push(`   ┃                                             ┃`);
+  content.push(`   ┃                                     ╔╗      ┃`);
+  content.push(`   ┃       Z     Z     Z     Z     Z     ║║      ┃`);
+  content.push(`   ┃                                     ╚╝      ┃`);
+  content.push(`   ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫`);
+  content.push(`   ┃                                             ┃`);
+  content.push(`   ┃                Insert Coins!                ┃`);
+  content.push(`   ┃                                             ┃`);
+  content.push(`┏━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━┓`);
+  content.push(`┃                                                    ┃`);
+  content.push(`┃                                                    ┃`);
   content.push(winLine);
-  content.push(`┃                                             ┃`);
-  content.push(`┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`);
+  content.push(`┃                                                    ┃`);
+  content.push(`┃                                                    ┃`);
+  content.push(`┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`);
   content.push(`\n`);
 
   console.log(content.join("\n"));
@@ -166,8 +186,10 @@ export const animateGhostSteps = async (input: string) => {
       }
     }
 
-    printAsSlotMachine(prevPositions, positions, nextPositions);
-    await sleep(1);
+    if (steps % 100 === 0) {
+      printAsSlotMachine(prevPositions, positions, nextPositions);
+      await sleep(50);
+    }
 
     if (reached.length === positions.length) {
       let result = reached.reduce(lcm);
