@@ -165,3 +165,8 @@ export const gcd = (a, b) => (a ? gcd(b % a, a) : b);
  * @param b
  */
 export const lcm = (a, b) => (a * b) / gcd(a, b);
+
+export const sleep = (ms) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
