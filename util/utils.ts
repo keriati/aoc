@@ -105,7 +105,7 @@ const p1 = 311;
 const p2 = 997;
 
 /**
- * Returns a unique integer (as key) from 3 integers
+ * Returns a unique integer (as key) from 3 unsigned integers
  * @param a
  * @param b
  * @param c
@@ -116,11 +116,21 @@ export const mk3n = (a: number, b: number, c: number): number =>
 /**
  * Returns a unique integer (as key) from 2 unsigned integers
  * Uses Elegant Pairing
- * @param a
- * @param b
+ * @param x
+ * @param y
  */
-export const mk2n = (a: number, b: number): number =>
-  a >= b ? a * a + a + b : a + b * b;
+export const mk2n = (x: number, y: number): number =>
+  x >= y ? x * x + x + y : y * y + x;
+
+/**
+ * Unpair elegant pairing
+ * @param z
+ */
+export const umk2n = (z: number): [number, number] => {
+  const q = Math.floor(Math.sqrt(z));
+  const l = z - q * q;
+  return l < q ? [l, q] : [q, l - q];
+};
 
 /**
  * Returns a unique integer (as key) from 2 signed integers
@@ -128,7 +138,7 @@ export const mk2n = (a: number, b: number): number =>
  * @param a
  * @param b
  */
-export const mk2ns = (a: number, b: number): number => {
+export const pairSInt = (a: number, b: number): number => {
   const A = a >= 0 ? 2 * a : -2 * a - 1;
   const B = b >= 0 ? 2 * b : -2 * b - 1;
   return mk2n(A, B) * 0.5;
@@ -136,9 +146,10 @@ export const mk2ns = (a: number, b: number): number => {
 
 /**
  * Unpair elegant pairing
+ * @deprecated Doesn't work for some reason
  * @param z
  */
-export const umk2ns = (z: number): [number, number] => {
+export const uPairSInt = (z: number): [number, number] => {
   const sqrtz = Math.floor(Math.sqrt(z));
   const sqz = sqrtz * sqrtz;
 

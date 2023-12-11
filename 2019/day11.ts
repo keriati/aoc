@@ -1,5 +1,5 @@
 import { IntCodeComputer, STATUS_FINISHED } from "./IntCode09";
-import { mk2ns } from "../util/utils";
+import { pairSInt } from "../util/utils";
 
 class Robot {
   private brain: IntCodeComputer;
@@ -12,7 +12,7 @@ class Robot {
 
   constructor(code: number[], startColor: number) {
     this.brain = new IntCodeComputer(code);
-    this.path.set(mk2ns(this.positions[0], this.positions[1]), startColor);
+    this.path.set(pairSInt(this.positions[0], this.positions[1]), startColor);
   }
 
   drawPath() {
@@ -21,7 +21,7 @@ class Robot {
     for (let y = 1; y > -7; y--) {
       display += "\n";
       for (let x = 0; x < 41; x++) {
-        if (this.path.get(mk2ns(x, y)) === 1) {
+        if (this.path.get(pairSInt(x, y)) === 1) {
           display += "#";
         } else {
           display += " ";
@@ -40,7 +40,7 @@ class Robot {
     let status;
 
     do {
-      const positionKey = mk2ns(this.positions[0], this.positions[1]);
+      const positionKey = pairSInt(this.positions[0], this.positions[1]);
 
       const color = this.path.has(positionKey) ? this.path.get(positionKey) : 0;
 
