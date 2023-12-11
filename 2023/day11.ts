@@ -5,8 +5,8 @@ const parseGalaxyMap = (
 ): [[number, number][], number[], number[]] => {
   const positions: [number, number][] = [];
 
-  const emptyColumns = new Set(range(0, map.length));
-  const emptyRows = new Set(range(0, map[0].length));
+  const emptyColumns = new Set<number>(range(0, map.length));
+  const emptyRows = new Set<number>(range(0, map[0].length));
 
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
@@ -21,40 +21,21 @@ const parseGalaxyMap = (
   return [positions, Array.from(emptyColumns), Array.from(emptyRows)];
 };
 
-const getEmptyRowsBetweenPairs = (
-  pair: [number, number][],
-  emptyRows: number[]
-): number => {
-  const minY = Math.min(pair[0][1], pair[1][1]);
-  const maxY = Math.max(pair[0][1], pair[1][1]);
+const expandPositions = (
+  galaxyPositions: [number, number][],
+  emptyRows: number[],
+  emptyColumns: number[],
+  expansionRate: number
+) =>
+  galaxyPositions.map(([x, y]) => {
+    const rowsBefore = emptyRows.filter((row) => row < y);
+    const columnsBefore = emptyColumns.filter((column) => column < x);
 
-  let count = 0;
-
-  for (let i = 0; i < emptyRows.length; i++) {
-    if (emptyRows[i] > minY && emptyRows[i] < maxY) {
-      count++;
-    }
-  }
-
-  return count;
-};
-
-const getEmptyColumnsBetweenPairs = (
-  pair: [number, number][],
-  emptyColumns: number[]
-): number => {
-  const minX = Math.min(pair[0][0], pair[1][0]);
-  const maxX = Math.max(pair[0][0], pair[1][0]);
-  let count = 0;
-
-  for (let i = 0; i < emptyColumns.length; i++) {
-    if (emptyColumns[i] > minX && emptyColumns[i] < maxX) {
-      count++;
-    }
-  }
-
-  return count;
-};
+    return [
+      x + columnsBefore.length * (expansionRate - 1),
+      y + rowsBefore.length * (expansionRate - 1),
+    ];
+  });
 
 export const getGalaxyDistanceSum = (
   input: string,
@@ -64,33 +45,20 @@ export const getGalaxyDistanceSum = (
 
   const [galaxyPositions, emptyRows, emptyColumns] = parseGalaxyMap(galaxyMap);
 
-  const galaxyPairs = createPairs(galaxyPositions);
+  const expandedPositions = expandPositions(
+    galaxyPositions,
+    emptyRows,
+    emptyColumns,
+    expansionRate
+  );
 
-  let result = 0;
+  const galaxyPairs = createPairs(expandedPositions);
 
-  for (let i = 0; i < galaxyPairs.length; i++) {
-    const pair = galaxyPairs[i];
-
-    const emptyRowsBetweenPairs = getEmptyRowsBetweenPairs(pair, emptyRows);
-    const emptyColumnsBetweenPairs = getEmptyColumnsBetweenPairs(
-      pair,
-      emptyColumns
-    );
-
-    const expansion = expansionRate - 1;
-
-    const minX = Math.min(pair[0][0], pair[1][0]);
-    const maxX =
-      Math.max(pair[0][0], pair[1][0]) + emptyColumnsBetweenPairs * expansion;
-
-    const minY = Math.min(pair[0][1], pair[1][1]);
-    const maxY =
-      Math.max(pair[0][1], pair[1][1]) + emptyRowsBetweenPairs * expansion;
-
-    const distance = maxX - minX + (maxY - minY);
-
-    result += distance;
-  }
-
-  return result;
+  return galaxyPairs.reduce(
+    (sum, pair) =>
+      sum +
+      Math.abs(pair[0][0] - pair[1][0]) +
+      Math.abs(pair[0][1] - pair[1][1]),
+    0
+  );
 };
