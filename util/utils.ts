@@ -62,6 +62,23 @@ export const createCombinations = <T>(items: T[], length): T[][] => {
 };
 
 /**
+ * Returns all pairs from elements
+ *
+ * @param elements
+ */
+export const createPairs = <T>(elements: T[]): [T, T][] => {
+  const pairs: [T, T][] = [];
+
+  for (let i = 0; i < elements.length - 1; i++) {
+    for (let j = i + 1; j < elements.length; j++) {
+      pairs.push([elements[i], elements[j]]);
+    }
+  }
+
+  return pairs;
+};
+
+/**
  * Returns an array of numbers from start to stop with step
  *
  * @param start
