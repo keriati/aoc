@@ -56,7 +56,7 @@ describe("utils", () => {
       expect(actual.size).toBe(1000 * 1000);
     });
 
-    xit("returns two original integers from paired integer", () => {
+    it("returns two original integers from paired integer", () => {
       for (let x = -100; x < 100; x++) {
         for (let y = -100; y < 100; y++) {
           const actual = pairSInt(x, y);

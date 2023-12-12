@@ -141,23 +141,22 @@ export const umk2n = (z: number): [number, number] => {
 export const pairSInt = (a: number, b: number): number => {
   const A = a >= 0 ? 2 * a : -2 * a - 1;
   const B = b >= 0 ? 2 * b : -2 * b - 1;
-  return mk2n(A, B) * 0.5;
+  return mk2n(A, B);
 };
 
 /**
  * Unpair elegant pairing
- * @deprecated Doesn't work for some reason
+ *
  * @param z
  */
 export const uPairSInt = (z: number): [number, number] => {
   const sqrtz = Math.floor(Math.sqrt(z));
   const sqz = sqrtz * sqrtz;
 
-  const result1 =
-    z - sqz >= sqrtz ? [sqrtz, z - sqz - sqrtz] : [z - sqz, sqrtz];
+  const result = z - sqz >= sqrtz ? [sqrtz, z - sqz - sqrtz] : [z - sqz, sqrtz];
 
-  const xx = result1[0] % 2 === 0 ? result1[0] / 2 : result1[0] / -2 + 1;
-  const yy = result1[1] % 2 === 0 ? result1[1] / 2 : result1[1] / -2 + 1;
+  const xx = result[0] % 2 === 0 ? result[0] / 2 : (result[0] + 1) / -2;
+  const yy = result[1] % 2 === 0 ? result[1] / 2 : (result[1] + 1) / -2;
 
   return [xx, yy];
 };
