@@ -1,67 +1,61 @@
 const getVariants = (
   springs: string,
-  checkSum: number[],
+  check: number[],
   cache = new Map<string, number>()
-) => {
+): number => {
   let checkKey = 0;
-  for (let i = 0; i < checkSum.length; i++) {
-    checkKey = checkKey * 10 + checkSum[i];
+  for (let i = 0; i < check.length; i++) {
+    checkKey = checkKey * 17 + check[i];
   }
 
   let key = `${springs}|${checkKey}`;
   if (cache.has(key)) return cache.get(key);
 
   if (springs.length === 0) {
-    const result = checkSum.length === 0 ? 1 : 0;
+    const result = check.length === 0 ? 1 : 0;
 
     cache.set(key, result);
     return result;
   }
 
-  if (springs[0] === "?") {
+  let firstChar = springs[0];
+
+  if (firstChar === "?") {
+    let springsRest = springs.substring(1);
     const result =
-      getVariants(`.${springs.substring(1)}`, checkSum, cache) +
-      getVariants(`#${springs.substring(1)}`, checkSum, cache);
+      getVariants(`.${springsRest}`, check, cache) +
+      getVariants(`#${springsRest}`, check, cache);
 
     cache.set(key, result);
     return result;
   }
 
-  if (springs[0] === ".") {
-    const result = getVariants(springs.slice(1), checkSum, cache);
+  if (firstChar === ".") {
+    const result = getVariants(springs.slice(1), check, cache);
 
     cache.set(key, result);
     return result;
   }
 
-  if (springs[0] === "#") {
-    let checkSumValue = 0;
+  if (firstChar === "#") {
+    let checkSum = 0;
 
-    for (let i = 0; i < checkSum.length; i++) {
-      checkSumValue += checkSum[i];
+    for (let i = 0; i < check.length; i++) {
+      checkSum += check[i];
     }
 
-    if (
-      springs.length < checkSumValue ||
-      springs.slice(0, checkSum[0]).includes(".")
-    ) {
-      const result = 0;
-
-      cache.set(key, result);
-      return result;
+    if (springs.length < checkSum || springs.slice(0, check[0]).includes(".")) {
+      return 0;
     }
 
-    if (checkSum.length < 1) {
-      const result = 0;
-
-      cache.set(key, result);
-      return result;
+    if (check.length < 1) {
+      return 0;
     }
 
-    if (checkSum.length === 1) {
+    if (check.length === 1) {
       const result = getVariants(
-        springs.slice(checkSum[0]),
-        checkSum.slice(1),
+        springs.slice(check[0]),
+        check.slice(1),
         cache
       );
 
@@ -69,16 +63,13 @@ const getVariants = (
       return result;
     }
 
-    if (checkSum.length > 1) {
-      if (springs.length < checkSum[0] + 1 || springs[checkSum[0]] === "#") {
-        const result = 0;
-
-        cache.set(key, result);
-        return result;
+    if (check.length > 1) {
+      if (springs.length < check[0] + 1 || springs[check[0]] === "#") {
+        return 0;
       }
       const result = getVariants(
-        springs.slice(checkSum[0] + 1),
-        checkSum.slice(1),
+        springs.slice(check[0] + 1),
+        check.slice(1),
         cache
       );
 
@@ -86,6 +77,7 @@ const getVariants = (
       return result;
     }
   }
+  throw new Error("Invalid input");
 };
 
 export const getArrangementSum = (input: string, expand = 1) =>

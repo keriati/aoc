@@ -7,6 +7,6 @@ const fileInput = fs.readFileSync(path.resolve(__dirname, "day12.txt"), {
   flag: "r",
 });
 const start = Date.now();
-const actual = getArrangementSum(fileInput, 5);
+getArrangementSum(fileInput, 5);
 
 console.log("Time", Date.now() - start, "ms");

@@ -193,7 +193,17 @@ export const gcd = (a, b) => (a ? gcd(b % a, a) : b);
  */
 export const lcm = (a, b) => (a * b) / gcd(a, b);
 
+/**
+ *  Async Sleep
+ * @param ms
+ */
 export const sleep = (ms) =>
   new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
+
+export const booleanArrayToNumber = (arr: boolean[]): number =>
+  arr.reduce(
+    (acc, val, index) => acc + (val ? 1 : 0) * 2 ** (arr.length - 1 - index),
+    0
+  );

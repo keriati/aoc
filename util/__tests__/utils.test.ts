@@ -1,4 +1,11 @@
-import { mk2n, mk3n, pairSInt, umk2n, uPairSInt } from "../utils";
+import {
+  booleanArrayToNumber,
+  mk2n,
+  mk3n,
+  pairSInt,
+  umk2n,
+  uPairSInt,
+} from "../utils";
 
 describe("utils", () => {
   describe("Elegant Pairing - unsigned", () => {
@@ -40,6 +47,21 @@ describe("utils", () => {
       }
 
       expect(actual.size).toBe(200 * 200 * 200);
+    });
+  });
+
+  describe("Boolean Array to Integer", () => {
+    it("returns a unique integer from a boolean array", () => {
+      const actual = new Set<number>();
+      const stringify = new Set<string>();
+
+      for (let i = 0; i <= 100; i++) {
+        const arr = Array.from({ length: i }, () => Math.random() > 0.5);
+        stringify.add(arr.toString());
+        actual.add(booleanArrayToNumber(arr));
+      }
+
+      expect(actual.size).toBe(stringify.size);
     });
   });
 
