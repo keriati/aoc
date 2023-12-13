@@ -207,3 +207,6 @@ export const booleanArrayToNumber = (arr: boolean[]): number =>
     (acc, val, index) => acc + (val ? 1 : 0) * 2 ** (arr.length - 1 - index),
     0
   );
+
+export const transpose = <T>(matrix: T[][]) =>
+  matrix[0].map((col, c) => matrix.map((row, r) => matrix[r][c]));
