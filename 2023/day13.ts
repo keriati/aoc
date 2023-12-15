@@ -1,4 +1,4 @@
-import { transpose } from "../util/utils";
+import { transpose } from "../util/matrix";
 
 const frames: [string[][], number, boolean][] = [];
 let oddPattern = true;
