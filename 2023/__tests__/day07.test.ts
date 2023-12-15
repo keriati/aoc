@@ -9,7 +9,7 @@ KTJJT 220
 QQQJA 483`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 07", () => {
+  describe("Day 07: Camel Cards", () => {
     it("returns the total winnings", () => {
       const actual = getTotalWinnings(input);
 

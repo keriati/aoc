@@ -35,7 +35,7 @@ const inputPart22 = `..........
 ..........`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 10", () => {
+  describe("Day 10: Pipe Maze", () => {
     it("returns the number of steps need to the farthest position", () => {
       const actual = getMostSteps(input);
 

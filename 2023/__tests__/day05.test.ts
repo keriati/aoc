@@ -37,7 +37,7 @@ humidity-to-location map:
 56 93 4`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 05", () => {
+  describe("Day 05: If You Give A Seed A Fertilizer", () => {
     it("returns the nearest location", () => {
       const actual = getNearestLocation(input);
 

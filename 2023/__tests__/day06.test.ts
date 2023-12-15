@@ -6,7 +6,7 @@ const input = `Time:      7  15   30
 Distance:  9  40  200`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 06", () => {
+  describe("Day 06: Wait For It", () => {
     it("returns the product of ways to beat the record", () => {
       const actual = getResult(input);
 

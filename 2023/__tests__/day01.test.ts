@@ -16,7 +16,7 @@ zoneight234
 7pqrstsixteen`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 01", () => {
+  describe("Day 01: Trebuchet?!", () => {
     it("returns the sum of digits", () => {
       const actual = getCalibrationValueSum(input);
 

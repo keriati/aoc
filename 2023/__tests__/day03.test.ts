@@ -14,7 +14,7 @@ const input = `467..114..
 .664.598..`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 03", () => {
+  describe("Day 03: Gear Ratios", () => {
     it("returns the sum of engine part numbers", () => {
       const actual = getPartNumberSum(input);
 

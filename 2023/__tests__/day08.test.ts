@@ -24,7 +24,7 @@ const input2 = `LR
 XXX = (XXX, XXX)`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 08", () => {
+  describe("Day 08: Haunted Wasteland", () => {
     it("returns the number of steps required", () => {
       const actual = getSteps(input);
 

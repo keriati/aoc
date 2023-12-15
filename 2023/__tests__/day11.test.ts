@@ -14,7 +14,7 @@ const input = `...#......
 #...#.....`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 11", () => {
+  describe("Day 11: Cosmic Expansion", () => {
     it("returns the sum of shortest paths", () => {
       const actual = getGalaxyDistanceSum(input);
 

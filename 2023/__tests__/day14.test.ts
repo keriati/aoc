@@ -29,7 +29,7 @@ O.#..O.#.#
 #OO..#....`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 14", () => {
+  describe("Day 14: Parabolic Reflector Dish", () => {
     it("returns the load from a map", () => {
       const actual = getLoad(
         inputLoadCheck.split("\n").map((line) => line.split(""))

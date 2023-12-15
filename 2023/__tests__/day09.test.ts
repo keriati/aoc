@@ -7,7 +7,7 @@ const input = `0 3 6 9 12 15
 10 13 16 21 30 45`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 09", () => {
+  describe("Day 09: Mirage Maintenance", () => {
     it("returns the sum of extrapolated values", () => {
       const actual = getExtrapolatedSum(input);
 

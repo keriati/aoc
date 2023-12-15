@@ -17,7 +17,7 @@ const input = `???.### 1,1,3
 ?###???????? 3,2,1`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 12", () => {
+  describe("Day 12: Hot Springs", () => {
     it("returns the sum of all arrangements", () => {
       const actual = getArrangementSum(input);
 

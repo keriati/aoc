@@ -19,7 +19,7 @@ const input = `#.##..##.
 #....#..#`;
 
 describe("Advent of Code 2023", () => {
-  describe("Day 13", () => {
+  describe("Day 13: Point of Incidence", () => {
     it("returns the sum of pattern notes", () => {
       const actual = getPatternNotesSum(input);
 
