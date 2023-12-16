@@ -14,7 +14,7 @@ const input = `.#.#...|#.
 ...#.|..|.`;
 
 describe("Advent of Code 2018", () => {
-  describe("Day 18", () => {
+  describe("Day 18: Settlers of The North Pole", () => {
     it("returns the resource value of the forest", () => {
       const actual = getForestResourceValue(input);
 

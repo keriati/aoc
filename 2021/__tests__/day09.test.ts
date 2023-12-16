@@ -3,7 +3,7 @@ import * as path from "path";
 import { getResult, getResultPart2 } from "../day09";
 
 describe("Advent of Code 2021", () => {
-  describe("Day 9: Smoke Basin", () => {
+  describe("Day 09: Smoke Basin", () => {
     it("returns the result", () => {
       const input = `2199943210
 3987894921

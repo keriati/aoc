@@ -11,7 +11,7 @@ const input = `498,4 -> 498,6 -> 496,6
 503,4 -> 502,4 -> 502,9 -> 494,9`;
 
 describe("Advent of Code", () => {
-  describe("Day 14", () => {
+  describe("Day 14: Regolith Reservoir", () => {
     it("creates the wall map", () => {
       const actual = getWorld(input.split("\n"));
 

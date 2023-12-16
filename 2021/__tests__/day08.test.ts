@@ -3,7 +3,7 @@ import * as path from "path";
 import { getResult, getResultPart2 } from "../day08";
 
 describe("Advent of Code 2021", () => {
-  describe("Day 8: Seven Segment Search", () => {
+  describe("Day 08: Seven Segment Search", () => {
     it("returns the result", () => {
       const input = `be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe
 edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec | fcgedb cgb dgebacf gc

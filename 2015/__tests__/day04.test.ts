@@ -1,7 +1,7 @@
 import { getHashNumber } from "../day04";
 
 describe("Advent of Code 2015", () => {
-  describe("Day 4: The Ideal Stocking Stuffer", () => {
+  describe("Day 04: The Ideal Stocking Stuffer", () => {
     it("returns the number to have 5 leading zeroes in hash 1", () => {
       const actual = getHashNumber("abcdef", "00000");
 

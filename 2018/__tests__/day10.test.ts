@@ -35,7 +35,7 @@ position=<14,  7> velocity=<-2,  0>
 position=<-3,  6> velocity=< 2, -1>`;
 
 describe("Advent of Code 2018", () => {
-  describe("Day 10", () => {
+  describe("Day 10: The Stars Align", () => {
     it("returns the message and seconds elapsed", () => {
       const actual = getResult(input);
 

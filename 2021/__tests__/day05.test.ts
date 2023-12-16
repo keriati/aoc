@@ -3,7 +3,7 @@ import * as path from "path";
 import { getResult } from "../day05";
 
 describe("Advent of Code 2021", () => {
-  describe("Day 5: Hydrothermal Venture", () => {
+  describe("Day 05: Hydrothermal Venture", () => {
     it("returns the result", () => {
       const input = `0,9 -> 5,9
 8,0 -> 0,8

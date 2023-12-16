@@ -11,7 +11,7 @@ const input = `Before: [3, 2, 1, 1]
 After:  [3, 2, 2, 1]`;
 
 describe("Advent of Code 2018", () => {
-  describe("Day 16", () => {
+  describe("Day 16: Chronal Classification", () => {
     it("returns the number of samples matching 3 or more opcodes", () => {
       const actual = getSampleMatches(input);
 

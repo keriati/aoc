@@ -25,7 +25,7 @@ L 25
 U 20`;
 
 describe("Advent of Code", () => {
-  describe("Day 8", () => {
+  describe("Day 9: Rope Bridge", () => {
     it("returns number of visited positions", () => {
       const actual = getNumberOfPositionsVisited(testInput);
 

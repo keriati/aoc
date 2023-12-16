@@ -9,7 +9,7 @@ acctuvwj
 abdefghi`;
 
 describe("Advent of Code", () => {
-  describe("Day 12", () => {
+  describe("Day 12: Hill Climbing Algorithm", () => {
     it("should decide if we can move", () => {
       expect(canMove("a", "b")).toBeTruthy();
       expect(canMove("b", "a")).toBeTruthy();

@@ -18,7 +18,7 @@ const testInput = `1000
 10000`;
 
 describe("Advent of Code", () => {
-  describe("Day 1", () => {
+  describe("Day 1: Calorie Counting", () => {
     it("should return the elv number with most calories 1", () => {
       const topCalories = getTopCalories(testInput);
 

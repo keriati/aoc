@@ -10,7 +10,7 @@ const testInput = `2-4,6-8
 2-6,4-8`;
 
 describe("Advent of Code", () => {
-  describe("Day 4", () => {
+  describe("Day 4: Camp Cleanup", () => {
     it("returns the number of fully overlapping section assignments", () => {
       const actual = getOverlappingFull(testInput);
 

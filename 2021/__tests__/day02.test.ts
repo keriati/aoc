@@ -3,7 +3,7 @@ import * as path from "path";
 import { getPosition, getPositionAlt } from "../day02";
 
 describe("Advent of Code 2021", () => {
-  describe("Day 2: Dive!", () => {
+  describe("Day 02: Dive!", () => {
     it("returns final position", () => {
       const input = `forward 5
 down 5

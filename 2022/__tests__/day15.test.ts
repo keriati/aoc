@@ -18,7 +18,7 @@ Sensor at x=14, y=3: closest beacon is at x=15, y=3
 Sensor at x=20, y=1: closest beacon is at x=15, y=3`;
 
 describe("Advent of Code", () => {
-  describe("Day 15", () => {
+  describe("Day 15: Beacon Exclusion Zone", () => {
     it("returns number of positions where a beacon cannot be present single", () => {
       const actual = getCoveredPositionsAtLine(
         "Sensor at x=8, y=7: closest beacon is at x=2, y=10",

@@ -33,7 +33,7 @@ const stacksStringFile = [
 ];
 
 describe("Advent of Code", () => {
-  describe("Day 5", () => {
+  describe("Day 5: Supply Stacks", () => {
     it("returns top crates when using CrateMover 9000", () => {
       const actual = getTopCrates(commands, stackString);
 

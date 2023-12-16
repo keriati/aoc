@@ -14,7 +14,7 @@ import {
 } from "../day16";
 
 describe("Advent of Code 2021", () => {
-  describe("Day 16", () => {
+  describe("Day 16: Packet Decoder", () => {
     it("returns the binary representation", () => {
       const input = `D2FE28`;
       const actual = hexToBin(input);

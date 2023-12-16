@@ -9,7 +9,7 @@ const testInput = `30373
 35390`;
 
 describe("Advent of Code", () => {
-  describe("Day 8", () => {
+  describe("Day 8: Treetop Tree House", () => {
     it("returns number of visible trees", () => {
       const actual = getVisibleTreeCount(testInput);
 

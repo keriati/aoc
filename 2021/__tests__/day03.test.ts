@@ -3,7 +3,7 @@ import * as path from "path";
 import { getResult, getResultPart2 } from "../day03";
 
 describe("Advent of Code 2021", () => {
-  describe("Day 3: Binary Diagnostic", () => {
+  describe("Day 03: Binary Diagnostic", () => {
     it("returns gamma rate * epsilon rate", () => {
       const input = `00100
 11110

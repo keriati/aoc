@@ -3,7 +3,7 @@ import * as path from "path";
 import { countNice, countNicer, isNice, isNicer } from "../day05";
 
 describe("Advent of Code 2015", () => {
-  describe("Day 5: Doesn't He Have Intern-Elves For This?", () => {
+  describe("Day 05: Doesn't He Have Intern-Elves For This?", () => {
     it("returns true for nice word 1", () => {
       const actual = isNice("ugknbfddgicrmopn");
 

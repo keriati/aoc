@@ -4,7 +4,7 @@ import { Area, fireProbe, getHighestShot, getHitCount } from "../day17";
 // target area: x=207..263, y=-115..-63
 
 describe("Advent of Code 2021", () => {
-  describe("Day 17", () => {
+  describe("Day 17: Trick Shot", () => {
     it("returns true for test case 1", () => {
       const target: Area = [
         [20, -5],

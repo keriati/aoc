@@ -27,7 +27,7 @@ const input = `[1,1,3,1,1]
 [1,[2,[3,[4,[5,6,0]]]],8,9]`;
 
 describe("Advent of Code", () => {
-  describe("Day 13", () => {
+  describe("Day 13: Distress Signal", () => {
     it("returns the sum of indices of pairs in the right order", () => {
       const actual = getSumOfIndices(input);
 

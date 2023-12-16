@@ -3,7 +3,7 @@ import * as path from "path";
 import { getSignal } from "../day07";
 
 describe("Advent of Code 2015", () => {
-  describe("Day 7: Some Assembly Required", () => {
+  describe("Day 07: Some Assembly Required", () => {
     it("returns the signal on wire a", () => {
       const input = `123 -> x
 456 -> y

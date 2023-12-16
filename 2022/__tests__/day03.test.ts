@@ -10,7 +10,7 @@ ttgJtRGJQctTZtZT
 CrZsJsPPZsGzwwsLwLmpwMDw`;
 
 describe("Advent of Code", () => {
-  describe("Day 3", () => {
+  describe("Day 3: Rucksack Reorganization", () => {
     it("returns the priorities", () => {
       const actual = getPriorities(testInput);
 

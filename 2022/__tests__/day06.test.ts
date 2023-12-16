@@ -9,7 +9,7 @@ nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg
 zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw`;
 
 describe("Advent of Code", () => {
-  describe("Day 6", () => {
+  describe("Day 6: Tuning Trouble", () => {
     it("returns number of character from signal start", () => {
       const actual = getSignalStart(testInput);
 

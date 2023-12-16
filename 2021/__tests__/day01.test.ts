@@ -3,7 +3,7 @@ import * as path from "path";
 import { getIncreases, getIncreasesWithWindow } from "../day01";
 
 describe("Advent of Code 2021", () => {
-  describe("Day 1: Sonar Sweep", () => {
+  describe("Day 01: Sonar Sweep", () => {
     it("returns the increases in the measurement", () => {
       const input = `199
 200

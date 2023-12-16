@@ -27,7 +27,7 @@ $ ls
 7214296 k`;
 
 describe("Advent of Code", () => {
-  describe("Day 7", () => {
+  describe("Day 7: No Space Left On Device", () => {
     it("returns total size of directories", () => {
       const actual = getTotalSize(testInput);
 

@@ -3,7 +3,7 @@ import * as path from "path";
 import { getResult } from "../day06";
 
 describe("Advent of Code 2021", () => {
-  describe("Day 6: Lanternfish", () => {
+  describe("Day 06: Lanternfish", () => {
     it("returns the result", () => {
       const input = `3,4,3,1,2`;
       const actual = getResult(input, 18);

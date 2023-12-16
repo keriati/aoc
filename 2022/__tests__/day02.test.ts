@@ -7,7 +7,7 @@ B X
 C Z`;
 
 describe("Advent of Code", () => {
-  describe("Day 2", () => {
+  describe("Day 2: Rock Paper Scissors", () => {
     it("returns your score", () => {
       const actual = getScore(testInput);
 

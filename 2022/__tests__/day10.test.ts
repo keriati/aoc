@@ -21,7 +21,7 @@ const crtResult2 = `
 `;
 
 describe("Advent of Code", () => {
-  describe("Day 10", () => {
+  describe("Day 10: Cathode-Ray Tube", () => {
     it("returns signal strength from file1", () => {
       const input = fs.readFileSync(path.resolve(__dirname, "../day10_1.txt"), {
         encoding: "utf8",
