@@ -207,3 +207,9 @@ export const booleanArrayToNumber = (arr: boolean[]): number =>
     (acc, val, index) => acc + (val ? 1 : 0) * 2 ** (arr.length - 1 - index),
     0
   );
+
+export const shuffleArray = <T>(array: T[]): T[] =>
+  array
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
