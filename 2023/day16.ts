@@ -4,15 +4,19 @@ import { mk2n } from "../util/utils";
 type Direction = "r" | "d" | "l" | "u";
 
 const frameBuffer = [];
-const buffFrame = (map: string[][], visitedTiles: Set<string>) => {
+const buffFrame = (map: string[][], visitedTiles: Set<number>) => {
   const buff = [];
   for (let y = 0; y < map.length; y++) {
     let line = "";
     for (let x = 0; x < map[y].length; x++) {
-      if (visitedTiles.has(`${x},${y}`)) {
-        line += "#";
+      if (map[y][x] === ".") {
+        if (visitedTiles.has(mk2n(x, y))) {
+          line += "\x1b[31mo\x1b[0m";
+        } else {
+          line += " ";
+        }
       } else {
-        line += map[y][x];
+        line += `\x1b[36m${map[y][x]}\x1b[0m`;
       }
     }
     buff.push(line);
@@ -27,7 +31,7 @@ const render = () => {
     if (frameBuffer.length === 0) {
       clearInterval(t);
     }
-  }, 50);
+  }, 100);
 };
 const dirMap = {
   r: 1,
@@ -58,11 +62,8 @@ const getEnergizedTileCount = (
   while (queue.size > 0) {
     const [x, y, direction] = queue.popLeft();
 
-    const tile = map?.[y]?.[x];
-    if (tile === undefined) {
-      beams--;
-      continue;
-    }
+    const tile = map[y][x];
+
     moves++;
     visitedTiles.add(mk2n(x, y));
 
@@ -152,6 +153,8 @@ const getEnergizedTileCount = (
 
     for (let i = 0; i < nextTiles.length; i++) {
       const [nx, ny, nd] = nextTiles[i];
+      if (!map[ny]?.[nx]) continue;
+
       const key = getKey(nx, ny, nd);
       if (!visitedStates.has(key)) {
         visitedStates.add(key);
