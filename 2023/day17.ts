@@ -11,7 +11,8 @@ type Direction = (typeof D)[keyof typeof D];
 type Position = [number, number, Direction];
 type HeatLoss = number;
 type StepsInDirection = number;
-type Step = [Position, HeatLoss, StepsInDirection];
+type Heuristic = number;
+type Step = [Heuristic, Position, HeatLoss, StepsInDirection];
 
 const getNextPositions: Record<
   Direction,
@@ -39,8 +40,8 @@ const getNextPositions: Record<
   ],
 };
 
-const cacheKey = ([[x, y, direction], hl, steps]: Step): number =>
-  (((x + 1) * 1000 + (y + 1)) * 1000 + direction) * 10 + (steps + 1);
+const cacheKey = ([, [x, y, direction], hl, steps]: Step): number =>
+  (y << 16) | (x << 8) | (direction << 4) | steps;
 
 export const getLeastHeatLoss = (input: string) => {
   const map = input.split("\n").map((line) => line.split("").map(Number));
@@ -50,16 +51,17 @@ export const getLeastHeatLoss = (input: string) => {
   const startX = 0;
   const startY = 0;
 
-  const startingStep: Step = [[startX, startY, D.E], 0, 0];
+  const startingStepEast: Step = [0, [startX, startY, D.E], 0, 0];
+  const startingStepSouth: Step = [0, [startX, startY, D.S], 0, 0];
 
-  const queue = new Heap<Step>(([, hlA], [, hlb]) => hlA - hlb);
-  queue.push(startingStep);
+  const queue = new Heap<Step>(([hA], [hb]) => hA - hb);
+  queue.push(startingStepEast);
+  queue.push(startingStepSouth);
 
   const visited = new Set<number>();
-  visited.add(cacheKey(startingStep));
 
   while (queue.size() > 0) {
-    const [[x, y, direction], heatLoss, steps] = queue.pop();
+    const [, [x, y, direction], heatLoss, steps] = queue.pop();
 
     if (x === endX && y === endY) return heatLoss;
 
@@ -71,6 +73,7 @@ export const getLeastHeatLoss = (input: string) => {
 
     for (const [nextX, nextY, nextDirection] of nextPositions) {
       let nextStep: Step = [
+        heatLoss + map[nextY][nextX] + endX - nextX + endY - nextY,
         [nextX, nextY, nextDirection],
         heatLoss + map[nextY][nextX],
         nextDirection === direction ? steps + 1 : 1,
@@ -95,16 +98,17 @@ export const getLeastHeatLossUltra = (input: string) => {
   const startX = 0;
   const startY = 0;
 
-  const startingStep: Step = [[startX, startY, D.E], 0, 0];
+  const startingStepEast: Step = [0, [startX, startY, D.E], 0, 0];
+  const startingStepSouth: Step = [0, [startX, startY, D.S], 0, 0];
 
-  const queue = new Heap<Step>(([, hlA], [, hlb]) => hlA - hlb);
-  queue.push(startingStep);
+  const queue = new Heap<Step>(([hA], [hB]) => hA - hB);
+  queue.push(startingStepEast);
+  queue.push(startingStepSouth);
 
   const visited = new Set<number>();
-  visited.add(cacheKey(startingStep));
 
   while (queue.size() > 0) {
-    const [[x, y, direction], heatLoss, steps] = queue.pop();
+    const [, [x, y, direction], heatLoss, steps] = queue.pop();
 
     if (x === endX && y === endY) {
       if (steps < 4) continue;
@@ -121,6 +125,7 @@ export const getLeastHeatLossUltra = (input: string) => {
 
     for (const [nextX, nextY, newDirection] of nextPositions) {
       let nextStep: Step = [
+        heatLoss + map[nextY][nextX] + endX - nextX + endY - nextY,
         [nextX, nextY, newDirection],
         heatLoss + map[nextY][nextX],
         newDirection === direction ? steps + 1 : 1,
