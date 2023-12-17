@@ -54,16 +54,20 @@ export const getLeastHeatLoss = (input: string) => {
   const startingStepEast: Step = [0, [startX, startY, D.E], 0, 0];
   const startingStepSouth: Step = [0, [startX, startY, D.S], 0, 0];
 
-  const queue = new Heap<Step>(([hA], [hb]) => hA - hb);
+  const queue = new Heap<Step>(([hA], [hB]) => hA - hB);
   queue.push(startingStepEast);
   queue.push(startingStepSouth);
 
   const visited = new Set<number>();
+  // const visitedTiles = new Map<number, [number, number]>();
 
-  while (queue.size() > 0) {
+  while (queue.size() >= 0) {
     const [, [x, y, direction], heatLoss, steps] = queue.pop();
-
-    if (x === endX && y === endY) return heatLoss;
+    // visitedTiles.set(mk2n(x, y), [x, y]);
+    if (x === endX && y === endY) {
+      // break;
+      return heatLoss;
+    }
 
     const nextPositions = getNextPositions[direction](x, y)
       .filter(([, , newDirection]) =>
@@ -87,6 +91,8 @@ export const getLeastHeatLoss = (input: string) => {
     }
   }
 
+  // render(map, visitedTiles);
+
   return -1;
 };
 
@@ -106,12 +112,15 @@ export const getLeastHeatLossUltra = (input: string) => {
   queue.push(startingStepSouth);
 
   const visited = new Set<number>();
+  // const visitedTiles = new Map<number, [number, number]>();
 
   while (queue.size() > 0) {
     const [, [x, y, direction], heatLoss, steps] = queue.pop();
+    // visitedTiles.set(mk2n(x, y), [x, y]);
 
     if (x === endX && y === endY) {
       if (steps < 4) continue;
+      // break;
       return heatLoss;
     }
 
@@ -138,6 +147,8 @@ export const getLeastHeatLossUltra = (input: string) => {
       }
     }
   }
+
+  // render(map, visitedTiles);
 
   return -1;
 };

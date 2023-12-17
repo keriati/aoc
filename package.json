@@ -38,6 +38,6 @@
   },
   "dependencies": {
     "@blakeembrey/deque": "^1.0.5",
-    "heap-js": "^2.2.0"
+    "heap-js": "^2.3.0"
   }
 }

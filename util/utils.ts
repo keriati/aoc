@@ -1,3 +1,5 @@
+import readline from "readline";
+
 export const defaultDict = (Init) =>
   new Proxy(
     {},
@@ -213,3 +215,8 @@ export const shuffleArray = <T>(array: T[]): T[] =>
     .map((value) => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
+
+export const writeToTerminal = (x: number, y: number, text = " ") => {
+  readline.cursorTo(process.stdout, x, y);
+  process.stdout.write(text);
+};
