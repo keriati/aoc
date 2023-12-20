@@ -1,3 +1,6 @@
+import Heap from "heap-js";
+import { mk2n } from "../util/utils";
+
 class Node {
   constructor(
     public readonly x: number,
@@ -23,7 +26,7 @@ const parseInput = (input) =>
     );
   });
 
-export const getViablePairs = (input) => {
+export const getViablePairs = (input: string) => {
   const nodes: Node[] = parseInput(input);
 
   let pairs = 0;
@@ -39,4 +42,64 @@ export const getViablePairs = (input) => {
   }
 
   return pairs;
+};
+
+const getStepsToBeforeLast = (nodeMap: Node[][], node: Node) => {
+  const endX = nodeMap[0].length - 2;
+  const endY = 0;
+
+  const queue = new Heap<[number, number, number]>(
+    ([, , stepsA], [, , stepsB]) => stepsA - stepsB
+  );
+
+  queue.push([node.x, node.y, 0]);
+  const visited = new Set<number>();
+
+  while (queue.size() > 0) {
+    const [x, y, steps] = queue.pop();
+
+    if (x === endX && y === endY) return steps;
+
+    const neighbours = [
+      [x - 1, y],
+      [x + 1, y],
+      [x, y - 1],
+      [x, y + 1],
+    ];
+
+    neighbours.forEach(([nx, ny]) => {
+      if (nx < 0 || ny < 0 || nx >= nodeMap[0].length || ny >= nodeMap.length)
+        return;
+
+      const n = nodeMap[ny][nx];
+
+      if (n.used > node.avail) return;
+      if (visited.has(mk2n(nx, ny))) return;
+
+      visited.add(mk2n(nx, ny));
+      queue.push([nx, ny, steps + 1]);
+    });
+  }
+
+  return -1;
+};
+
+export const getFewestStepsForData = (input: string) => {
+  const nodes: Node[] = parseInput(input);
+
+  const nodeMap: Node[][] = [];
+
+  nodes.forEach((n) => {
+    const { x, y } = n;
+    nodeMap[y] = nodeMap[y] || [];
+    nodeMap[y][x] = n;
+  });
+
+  const spaceNeeded = nodeMap[0][nodeMap[0].length - 1].used;
+
+  const startNode = nodes.filter((n) => n.avail > spaceNeeded);
+
+  const stepsToBeforeLast = getStepsToBeforeLast(nodeMap, startNode[0]);
+
+  return stepsToBeforeLast + (nodeMap[0].length - 2) * 5 + 1;
 };
