@@ -1,3 +1,6 @@
+# Advent of Code input files
+**/day*.txt
+
 # Logs
 logs
 *.log

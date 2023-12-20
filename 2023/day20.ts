@@ -97,7 +97,7 @@ class System {
 
   private cycles: Record<string, number> = {};
 
-  private buttonPresses = 0;
+  private buttonPushes = 0;
 
   constructor(configuration: string) {
     const connections = configuration.split("\n");
@@ -151,7 +151,8 @@ class System {
   }
 
   pushButton = () => {
-    this.buttonPresses++;
+    this.buttonPushes++;
+
     this.starting.forEach((name) => {
       this.queue.push(mq("l", name, null));
     });
@@ -167,9 +168,9 @@ class System {
         this.high++;
       }
 
-      if (destination === "zh" && pulse === "h") {
+      if (destination === this.exitModule && pulse === "h") {
         this.cycles[sender] =
-          this.cycles[sender] === 0 ? this.buttonPresses : this.cycles[sender];
+          this.cycles[sender] === 0 ? this.buttonPushes : this.cycles[sender];
       }
 
       this.modules.get(destination).receive(pulse, this.modules.get(sender));
@@ -178,8 +179,7 @@ class System {
 
   getProduct = () => this.low * this.high;
 
-  getRX = () =>
-    Object.values(this.cycles).reduce((acc, curr) => lcm(acc, curr), 1);
+  getRX = () => Object.values(this.cycles).reduce(lcm, 1);
 }
 
 export const getLowHighPulses = (input: string) => {
