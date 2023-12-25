@@ -1,36 +1,64 @@
+import { Deque } from "@blakeembrey/deque";
+import { mk2n, umk2n } from "../util/utils";
+
 const getKey = (x: number, y: number, z: number) => (z * 1000 + x) * 1000 + y;
+
+const toRender: [string[][], Set<number>][] = [];
+
+const render = () => {
+  console.log("\n");
+  const [map, positions] = toRender.pop();
+  const rendered = map.map((line) => [...line]);
+
+  positions.forEach((pos) => {
+    const [x, y] = umk2n(pos);
+    rendered[y][x] = "O";
+  });
+
+  console.log(rendered.map((line) => line.join("")).join("\n"));
+};
 
 const findPlots = (
   map: string[][],
   x: number,
   y: number,
-  maxSteps: number,
-  visited = new Set<number>(),
-  distance = 0
+  maxSteps: number
 ): number => {
-  const key = getKey(x, y, distance);
-
-  if (visited.has(key)) return 0;
-  visited.add(key);
-
-  if (distance === maxSteps) return 1;
-
   let plots = 0;
 
-  const neighbors = [
-    [x - 1, y],
-    [x + 1, y],
-    [x, y - 1],
-    [x, y + 1],
-  ];
+  const queue = new Deque<[number, number, number]>();
+  queue.push([x, y, 0]);
 
-  neighbors.forEach(([nx, ny]) => {
-    if (nx < 0 || ny < 0 || nx >= map[0].length || ny >= map.length) return;
+  const visited = new Set<number>();
+  const positions = new Set<number>();
 
-    if (map[ny][nx] === ".") {
-      plots += findPlots(map, nx, ny, maxSteps, visited, distance + 1);
+  while (queue.size > 0) {
+    const [x, y, distance] = queue.popLeft();
+
+    if (distance === maxSteps) {
+      plots++;
+      positions.add(mk2n(x, y));
+      continue;
     }
-  });
+
+    const neighbors = [
+      [x - 1, y],
+      [x + 1, y],
+      [x, y - 1],
+      [x, y + 1],
+    ];
+
+    neighbors.forEach(([nx, ny]) => {
+      if (nx < 0 || ny < 0 || nx >= map[0].length || ny >= map.length) return;
+
+      if (map[ny][nx] === "." && !visited.has(getKey(nx, ny, distance + 1))) {
+        visited.add(getKey(nx, ny, distance + 1));
+        queue.push([nx, ny, distance + 1]);
+      }
+    });
+  }
+
+  // toRender.push([map, positions]);
 
   return plots;
 };
@@ -43,7 +71,10 @@ export const getPlotsCount = (input: string, steps = 6) => {
 
   map[startY][startX] = ".";
 
-  return findPlots(map, startX, startY, steps);
+  let result = findPlots(map, startX, startY, steps);
+  // render();
+
+  return result;
 };
 
 /**
@@ -96,6 +127,7 @@ export const getPlotsCountBig = (input: string, steps: number) => {
   const eastPlots = findPlots(map, 0, startY, mapWidth - 1);
   const southPlots = findPlots(map, startX, 0, mapWidth - 1);
   const westPlots = findPlots(map, mapWidth - 1, startY, mapWidth - 1);
+  // render();
 
   const smallSteps = ~~(mapWidth / 2) - 1;
 
