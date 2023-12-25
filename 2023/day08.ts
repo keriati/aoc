@@ -1,4 +1,5 @@
 import { lcm } from "../util/utils";
+import { graphViz } from "../util/graphviz";
 
 type Network = Map<string, { L: string; R: string }>;
 
@@ -11,7 +12,7 @@ export const getSteps = (input: string) => {
     network.set(name, { L, R });
 
     return network;
-  }, new Map());
+  }, new Map<string, { L: string; R: string }>());
 
   let steps = 0;
   let instructionIndex = 0;
@@ -26,6 +27,16 @@ export const getSteps = (input: string) => {
     instructionIndex++;
     if (instructionIndex >= instructions.length) instructionIndex = 0;
   }
+
+  // const graph = Array.from(network.entries()).reduce(
+  //   (graph, [name, { L, R }]) => {
+  //     graph.push([name, [L, R]]);
+  //     return graph;
+  //   },
+  //   []
+  // );
+  //
+  // graphViz(graph).overlap("prism").render("aoc2023d08");
 
   return steps;
 };

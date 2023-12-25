@@ -1,4 +1,5 @@
 import { lcm } from "../util/utils";
+import { graphViz } from "../util/graphviz";
 
 type ModuleName = string;
 type Pulse = "l" | "h";
@@ -150,6 +151,19 @@ class System {
       }, {});
   }
 
+  render = () => {
+    const modules: [string, string[]][] = Array.from(
+      this.modules.entries()
+    ).map(([name, module]) => [
+      name,
+      module.destinations.map((d) => d?.name ?? "output"),
+    ]);
+
+    const filtered = modules.filter((m) => m[0] !== "zh");
+
+    graphViz(filtered).layout("circo").render("aoc2023d20");
+  };
+
   pushButton = () => {
     this.buttonPushes++;
 
@@ -194,6 +208,8 @@ export const getLowHighPulses = (input: string) => {
 
 export const getButtonPresses = (input: string) => {
   const system = new System(input);
+
+  // system.render();
 
   while (true) {
     system.pushButton();
