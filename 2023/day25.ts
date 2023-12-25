@@ -1,5 +1,8 @@
 import "regenerator-runtime/runtime";
 import { mincut } from "@graph-algorithm/minimum-cut";
+import { plotGraph } from "../util/graphviz";
+
+export const FILE_NAME = "aoc2023d25";
 
 const cutConnection = (
   connections: Map<string, string[]>,
@@ -66,6 +69,9 @@ export const getComponentGroupSizes = (input: string) => {
       alreadyConnectedComponents.push(component);
     }
   });
+
+  // console.log(connections);
+  // plotGraph(connections, FILE_NAME);
 
   for (const [componentA, componentB] of mincut(connections)) {
     cutConnection(connectionsMap, componentA, componentB);

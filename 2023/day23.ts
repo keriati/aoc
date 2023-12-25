@@ -1,5 +1,6 @@
 import { Deque } from "@blakeembrey/deque";
 import { mk2n, umk2n } from "../util/utils";
+import { plotDiGraph } from "../util/graphviz";
 
 export const getLongestHikeSlippery = (input: string) => {
   const map = input.split("\n").map((line) => line.split(""));
@@ -169,6 +170,12 @@ export const getLongestHike = (input: string) => {
   const intersections = [start, end, ...getIntersections(map)];
 
   const connections = getConnections(map, intersections);
+
+  // const connectionsArray: [number, number[]][] = [...connections.entries()].map(
+  //   ([start, ends]) => [start, ends.map(([end, distance]) => end)]
+  // );
+  //
+  // plotDiGraph(connectionsArray, "aoc2023d23");
 
   return getLongestPath(connections, start, end);
 };
