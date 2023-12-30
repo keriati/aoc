@@ -1,4 +1,4 @@
-import Heap from "heap-js";
+import { BucketQueue } from "../util/bucketqueue";
 
 const D = {
   N: 1,
@@ -54,15 +54,15 @@ export const getLeastHeatLoss = (input: string) => {
   const startingStepEast: Step = [0, [startX, startY, D.E], 0, 0];
   const startingStepSouth: Step = [0, [startX, startY, D.S], 0, 0];
 
-  const queue = new Heap<Step>(([hA], [hB]) => hA - hB);
-  queue.push(startingStepEast);
-  queue.push(startingStepSouth);
+  const queue = new BucketQueue<Step>();
+  queue.push(startingStepEast, 0);
+  queue.push(startingStepSouth, 0);
 
   const visited = new Set<number>();
   // const visitedTiles = new Map<number, [number, number]>();
 
-  while (queue.size() >= 0) {
-    const [, [x, y, direction], heatLoss, steps] = queue.pop();
+  while (queue.size >= 0) {
+    const [, [x, y, direction], heatLoss, steps] = queue.popMin();
     // visitedTiles.set(mk2n(x, y), [x, y]);
     if (x === endX && y === endY) {
       // break;
@@ -86,7 +86,7 @@ export const getLeastHeatLoss = (input: string) => {
       const key = cacheKey(nextStep);
       if (!visited.has(key)) {
         visited.add(key);
-        queue.push(nextStep);
+        queue.push(nextStep, nextStep[0]);
       }
     }
   }
@@ -107,15 +107,15 @@ export const getLeastHeatLossUltra = (input: string) => {
   const startingStepEast: Step = [0, [startX, startY, D.E], 0, 0];
   const startingStepSouth: Step = [0, [startX, startY, D.S], 0, 0];
 
-  const queue = new Heap<Step>(([hA], [hB]) => hA - hB);
-  queue.push(startingStepEast);
-  queue.push(startingStepSouth);
+  const queue = new BucketQueue<Step>();
+  queue.push(startingStepEast, 0);
+  queue.push(startingStepSouth, 0);
 
   const visited = new Set<number>();
   // const visitedTiles = new Map<number, [number, number]>();
 
-  while (queue.size() > 0) {
-    const [, [x, y, direction], heatLoss, steps] = queue.pop();
+  while (queue.size > 0) {
+    const [, [x, y, direction], heatLoss, steps] = queue.popMin();
     // visitedTiles.set(mk2n(x, y), [x, y]);
 
     if (x === endX && y === endY) {
@@ -143,7 +143,7 @@ export const getLeastHeatLossUltra = (input: string) => {
       const key = cacheKey(nextStep);
       if (!visited.has(key)) {
         visited.add(key);
-        queue.push(nextStep);
+        queue.push(nextStep, nextStep[0]);
       }
     }
   }
