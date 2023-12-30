@@ -1,4 +1,3 @@
-import Heap from "heap-js";
 import { Deque } from "@blakeembrey/deque";
 
 type Name = string;

@@ -1,5 +1,5 @@
-import Heap from "heap-js";
 import { mk2n } from "../util/utils";
+import { BucketQueue } from "../util/bucketqueue";
 
 class Node {
   constructor(
@@ -48,15 +48,13 @@ const getStepsToBeforeLast = (nodeMap: Node[][], node: Node) => {
   const endX = nodeMap[0].length - 2;
   const endY = 0;
 
-  const queue = new Heap<[number, number, number]>(
-    ([, , stepsA], [, , stepsB]) => stepsA - stepsB
-  );
+  const queue = new BucketQueue<[number, number, number]>();
 
-  queue.push([node.x, node.y, 0]);
+  queue.push([node.x, node.y, 0], 0);
   const visited = new Set<number>();
 
-  while (queue.size() > 0) {
-    const [x, y, steps] = queue.pop();
+  while (queue.size > 0) {
+    const [x, y, steps] = queue.popMin();
 
     if (x === endX && y === endY) return steps;
 
@@ -77,7 +75,7 @@ const getStepsToBeforeLast = (nodeMap: Node[][], node: Node) => {
       if (visited.has(mk2n(nx, ny))) return;
 
       visited.add(mk2n(nx, ny));
-      queue.push([nx, ny, steps + 1]);
+      queue.push([nx, ny, steps + 1], steps + 1);
     });
   }
 

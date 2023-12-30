@@ -1,5 +1,5 @@
-import Heap from "heap-js";
-import { createCombinations, intAHash } from "../util/utils";
+import { createCombinations } from "../util/utils";
+import { BucketQueue } from "../util/bucketqueue";
 
 export type Floor = boolean[];
 export type FloorMap = [Floor, Floor, Floor, Floor];
@@ -219,14 +219,14 @@ export const getMinElevatorRides = (input) => {
   const floorMap = parseToFloorMap(input);
 
   // priority q -> [step,position,FloorMap]
-  const q = new Heap<[number, number, FloorMap]>((a, b) => a[0] - b[0]);
-  q.add([0, 0, floorMap]);
+  const q = new BucketQueue<[number, number, FloorMap]>();
+  q.push([0, 0, floorMap], 0);
 
   const visited = new Set();
   visited.add(hashFloor(0, floorMap));
 
-  while (q.size() > 0) {
-    const [steps, pos, state] = q.pop();
+  while (q.size > 0) {
+    const [steps, pos, state] = q.popMin();
 
     if (isWinner(state)) {
       return steps;
@@ -238,7 +238,7 @@ export const getMinElevatorRides = (input) => {
       const myStateHash = hashFloor(pos, newState);
       if (!visited.has(myStateHash)) {
         visited.add(myStateHash);
-        q.add([steps + 1, pos, newState]);
+        q.push([steps + 1, pos, newState], steps + 1);
       }
     }
   }

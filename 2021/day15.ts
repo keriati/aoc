@@ -1,22 +1,5 @@
-import Heap from "heap-js";
 import { mk2n } from "../util/utils";
-
-class PriorityQueue {
-  items: [number, number, number][] = [];
-
-  push(item: [number, number, number]) {
-    this.items.push(item);
-    this.items.sort((a, b) => b[2] - a[2]);
-  }
-
-  pop() {
-    return this.items.pop();
-  }
-
-  size() {
-    return this.items.length;
-  }
-}
+import { BucketQueue } from "../util/bucketqueue";
 
 const neighbours = [
   [0, 1],
@@ -64,13 +47,13 @@ export class CaveMap {
 
   getLowestRiskPathSum() {
     const costMap = new Map<number, number>();
-    const q = this.getPriorityQueue();
+    const q = new BucketQueue<[number, number, number]>();
     const visited = new Set<number>();
 
-    q.push([0, 0, 0]);
+    q.push([0, 0, 0], 0);
 
-    while (q.size() > 0) {
-      const [x, y, risk] = q.pop();
+    while (q.size > 0) {
+      const [x, y, risk] = q.popMin();
 
       const pos = mk2n(x, y);
 
@@ -89,15 +72,12 @@ export class CaveMap {
         if (nx < 0 || nx >= this.getSize() || ny < 0 || ny >= this.getSize())
           continue;
 
-        q.push([nx, ny, this.getRisk([nx, ny]) + risk]);
+        let newRisk = this.getRisk([nx, ny]) + risk;
+        q.push([nx, ny, newRisk], newRisk);
       }
     }
 
     return costMap.get(mk2n(this.getSize() - 1, this.getSize() - 1));
-  }
-
-  private getPriorityQueue() {
-    return new Heap<[number, number, number]>((a, b) => a[2] - b[2]);
   }
 }
 
