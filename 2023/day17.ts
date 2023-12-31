@@ -1,4 +1,4 @@
-import { BucketQueue } from "../util/bucketqueue";
+import { BucketQueue } from "bucket-priority-queue";
 
 const D = {
   N: 1,
@@ -62,7 +62,7 @@ export const getLeastHeatLoss = (input: string) => {
   // const visitedTiles = new Map<number, [number, number]>();
 
   while (queue.size >= 0) {
-    const [, [x, y, direction], heatLoss, steps] = queue.popMin();
+    const [, [x, y, direction], heatLoss, steps] = queue.popLowest();
     // visitedTiles.set(mk2n(x, y), [x, y]);
     if (x === endX && y === endY) {
       // break;
@@ -115,7 +115,7 @@ export const getLeastHeatLossUltra = (input: string) => {
   // const visitedTiles = new Map<number, [number, number]>();
 
   while (queue.size > 0) {
-    const [, [x, y, direction], heatLoss, steps] = queue.popMin();
+    const [, [x, y, direction], heatLoss, steps] = queue.popLowest();
     // visitedTiles.set(mk2n(x, y), [x, y]);
 
     if (x === endX && y === endY) {

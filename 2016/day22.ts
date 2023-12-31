@@ -1,5 +1,5 @@
+import { BucketQueue } from "bucket-priority-queue";
 import { mk2n } from "../util/utils";
-import { BucketQueue } from "../util/bucketqueue";
 
 class Node {
   constructor(
@@ -54,7 +54,7 @@ const getStepsToBeforeLast = (nodeMap: Node[][], node: Node) => {
   const visited = new Set<number>();
 
   while (queue.size > 0) {
-    const [x, y, steps] = queue.popMin();
+    const [x, y, steps] = queue.popLowest();
 
     if (x === endX && y === endY) return steps;
 

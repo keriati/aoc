@@ -1,5 +1,5 @@
+import { BucketQueue } from "bucket-priority-queue";
 import { mk2n } from "../util/utils";
-import { BucketQueue } from "../util/bucketqueue";
 
 const neighbours = [
   [0, 1],
@@ -53,7 +53,7 @@ export class CaveMap {
     q.push([0, 0, 0], 0);
 
     while (q.size > 0) {
-      const [x, y, risk] = q.popMin();
+      const [x, y, risk] = q.popLowest();
 
       const pos = mk2n(x, y);
 
