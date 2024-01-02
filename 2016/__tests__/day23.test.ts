@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult, getResultPart2 } from "../day23";
+import { getSafeValue } from "../day23";
 
 const input = `cpy 2 a
 tgl a
@@ -11,14 +11,14 @@ dec a
 dec a`;
 
 describe("Advent of Code 2016", () => {
-  describe("Day 23", () => {
-    it("returns the result", () => {
-      const actual = getResult(input);
+  describe("Day 23: Safe Cracking", () => {
+    it("returns the value to be sent to the safe", () => {
+      const actual = getSafeValue(input);
 
       expect(actual).toBe(3);
     });
 
-    it("returns the result - file input", () => {
+    it("returns the value to be sent to the safe - file input", () => {
       const fileInput = fs.readFileSync(
         path.resolve(__dirname, "../day23.txt"),
         {
@@ -27,13 +27,12 @@ describe("Advent of Code 2016", () => {
         }
       );
 
-      const actual = getResult(fileInput, 0);
+      const actual = getSafeValue(fileInput);
 
-      expect(actual).not.toBe(42);
       expect(actual).toBe(11975);
     });
 
-    it("returns the result part 2 - file input", () => {
+    it("returns the value that should actually be sent to the safe - file input", () => {
       const fileInput = fs.readFileSync(
         path.resolve(__dirname, "../day23.txt"),
         {
@@ -42,7 +41,7 @@ describe("Advent of Code 2016", () => {
         }
       );
 
-      const actual = getResult(fileInput, 12);
+      const actual = getSafeValue(fileInput, 12);
 
       expect(actual).toBe(479008535);
     });
