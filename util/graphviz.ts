@@ -31,19 +31,27 @@ export type GraphvizOptions = {
 
 const OUT_DIR = "z_out";
 
-export const graphViz = <T>(nodes: [T, T][] | [T, T[]][]) => {
+export const graphViz = <T>(
+  nodes: [T, T][] | [T, T[]][] | [T, [T, number][]][]
+) => {
   const dotNodes = [];
   const graphType = Array.isArray(nodes[0][1]) ? "digraph" : "graph";
 
   if (Array.isArray(nodes[0][1])) {
     for (const [start, ends] of nodes) {
-      for (const end of ends as T[]) {
-        dotNodes.push(` ${start} -> ${end}`);
+      if (typeof ends === "string") {
+        dotNodes.push(` ${start} -- ${ends}`);
+      } else if (Array.isArray(ends)) {
+        for (const end of ends) {
+          if (Array.isArray(end)) {
+            dotNodes.push(
+              ` ${start} -> ${end[0]} [label=${end[1]}] [weight=${end[1]}]`
+            );
+          } else {
+            dotNodes.push(` ${start} -> ${end}`);
+          }
+        }
       }
-    }
-  } else {
-    for (const [start, end] of nodes) {
-      dotNodes.push(` ${start} -- ${end}`);
     }
   }
 
