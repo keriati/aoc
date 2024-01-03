@@ -1,4 +1,4 @@
-import { BucketQueue } from "bucket-priority-queue";
+import { MinBucketQueue } from "bucket-priority-queue";
 import { createCombinations } from "../util/utils";
 
 export type Floor = boolean[];
@@ -219,14 +219,14 @@ export const getMinElevatorRides = (input) => {
   const floorMap = parseToFloorMap(input);
 
   // priority q -> [step,position,FloorMap]
-  const q = new BucketQueue<[number, number, FloorMap]>();
+  const q = new MinBucketQueue<[number, number, FloorMap]>();
   q.push([0, 0, floorMap], 0);
 
   const visited = new Set();
   visited.add(hashFloor(0, floorMap));
 
   while (q.size > 0) {
-    const [steps, pos, state] = q.popLowest();
+    const [steps, pos, state] = q.pop();
 
     if (isWinner(state)) {
       return steps;

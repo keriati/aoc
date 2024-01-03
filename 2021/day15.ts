@@ -1,4 +1,4 @@
-import { BucketQueue } from "bucket-priority-queue";
+import { MinBucketQueue } from "bucket-priority-queue";
 import { mk2n } from "../util/utils";
 
 const neighbours = [
@@ -47,13 +47,13 @@ export class CaveMap {
 
   getLowestRiskPathSum() {
     const costMap = new Map<number, number>();
-    const q = new BucketQueue<[number, number, number]>();
+    const q = new MinBucketQueue<[number, number, number]>();
     const visited = new Set<number>();
 
     q.push([0, 0, 0], 0);
 
     while (q.size > 0) {
-      const [x, y, risk] = q.popLowest();
+      const [x, y, risk] = q.pop();
 
       const pos = mk2n(x, y);
 

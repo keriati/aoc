@@ -1,4 +1,4 @@
-import { BucketQueue } from "bucket-priority-queue";
+import { MinBucketQueue } from "bucket-priority-queue";
 import { createPairs, mk2n } from "../util/utils";
 import { graphViz } from "../util/graphviz";
 
@@ -28,12 +28,12 @@ const findShortestPath = (
   end: Position,
   map: string[][]
 ): number => {
-  const queue = new BucketQueue<[Position, number]>();
+  const queue = new MinBucketQueue<[Position, number]>();
   queue.push([start, 0], 0);
   const visited = new Set([mk2n(start[0], start[1])]);
 
   while (queue.size > 0) {
-    const [[x, y], steps] = queue.popLowest();
+    const [[x, y], steps] = queue.pop();
 
     if (x === end[0] && y === end[1]) {
       return steps;

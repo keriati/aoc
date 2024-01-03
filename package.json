@@ -39,8 +39,7 @@
   "dependencies": {
     "@blakeembrey/deque": "^1.0.5",
     "@graph-algorithm/minimum-cut": "^2.0.0",
-    "bucket-priority-queue": "^1.0.4",
-    "heap-js": "^2.3.0",
+    "bucket-priority-queue": "^2.0.0",
     "regenerator-runtime": "^0.14.1",
     "z3-solver": "^4.12.4"
   }

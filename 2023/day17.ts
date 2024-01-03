@@ -1,4 +1,4 @@
-import { BucketQueue } from "bucket-priority-queue";
+import { MinBucketQueue } from "bucket-priority-queue";
 
 const D = {
   N: 1,
@@ -54,7 +54,7 @@ export const getLeastHeatLoss = (input: string) => {
   const startingStepEast: Step = [0, [startX, startY, D.E], 0, 0];
   const startingStepSouth: Step = [0, [startX, startY, D.S], 0, 0];
 
-  const queue = new BucketQueue<Step>();
+  const queue = new MinBucketQueue<Step>();
   queue.push(startingStepEast, 0);
   queue.push(startingStepSouth, 0);
 
@@ -62,7 +62,7 @@ export const getLeastHeatLoss = (input: string) => {
   // const visitedTiles = new Map<number, [number, number]>();
 
   while (queue.size >= 0) {
-    const [, [x, y, direction], heatLoss, steps] = queue.popLowest();
+    const [, [x, y, direction], heatLoss, steps] = queue.pop();
     // visitedTiles.set(mk2n(x, y), [x, y]);
     if (x === endX && y === endY) {
       // break;
@@ -107,7 +107,7 @@ export const getLeastHeatLossUltra = (input: string) => {
   const startingStepEast: Step = [0, [startX, startY, D.E], 0, 0];
   const startingStepSouth: Step = [0, [startX, startY, D.S], 0, 0];
 
-  const queue = new BucketQueue<Step>();
+  const queue = new MinBucketQueue<Step>();
   queue.push(startingStepEast, 0);
   queue.push(startingStepSouth, 0);
 
@@ -115,7 +115,7 @@ export const getLeastHeatLossUltra = (input: string) => {
   // const visitedTiles = new Map<number, [number, number]>();
 
   while (queue.size > 0) {
-    const [, [x, y, direction], heatLoss, steps] = queue.popLowest();
+    const [, [x, y, direction], heatLoss, steps] = queue.pop();
     // visitedTiles.set(mk2n(x, y), [x, y]);
 
     if (x === endX && y === endY) {

@@ -1,3 +1,5 @@
+import { Deque } from "@blakeembrey/deque";
+
 const isOfficeWall = (fav: number, x: number, y: number): boolean => {
   const val = x * x + 3 * x + 2 * x * y + y + y * y + fav;
   const bin = val.toString(2);
@@ -39,14 +41,14 @@ const posHash = (x, y) => (x + 1) * 1000 + y + 1;
 
 export const getFewestOfficeSteps = (fav: number, tx: number, ty: number) => {
   // [step,x,y]
-  const q = [];
+  const q = new Deque<[number, number, number]>();
   q.push([0, 1, 1]);
 
   const visited = new Set();
   visited.add(posHash(1, 1));
 
-  while (q.length > 0) {
-    const [step, x, y] = q.shift();
+  while (q.size > 0) {
+    const [step, x, y] = q.popLeft();
 
     if (x === tx && y === ty) {
       return step;
@@ -66,13 +68,13 @@ export const getFewestOfficeSteps = (fav: number, tx: number, ty: number) => {
 
 export const getMaxReachablePositionCount = (fav: number) => {
   // [step,x,y]
-  const q: [number, number, number][] = [];
+  const q = new Deque<[number, number, number]>();
   q.push([0, 1, 1]);
 
   const visited = new Set();
 
-  while (q.length > 0) {
-    const [step, x, y] = q.shift();
+  while (q.size > 0) {
+    const [step, x, y] = q.popLeft();
 
     visited.add(posHash(x, y));
 
