@@ -1,6 +1,8 @@
 import readline from "readline";
 
-export const defaultDict = (Init) =>
+export type DefaultDict = Record<string | number | symbol, any>;
+
+export const defaultDict = (Init): DefaultDict =>
   new Proxy(
     {},
     {
