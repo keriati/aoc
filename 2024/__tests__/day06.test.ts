@@ -14,7 +14,7 @@ const input = `....#.....
 ......#...`;
 
 describe("Advent of Code 2024", () => {
-  describe("Day 06", () => {
+  describe("Day 06: Guard Gallivant", () => {
     it("returns the result", () => {
       const actual = getResult(input);
 
@@ -52,7 +52,6 @@ describe("Advent of Code 2024", () => {
 
       const actual = getResultPart2(fileInput);
 
-      expect(actual).not.toBe(1410);
       expect(actual).toBe(1503);
     });
   });
