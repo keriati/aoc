@@ -56,7 +56,7 @@ const getVisitedPositions = (map: string[][]) => {
   }
 };
 
-export const getResult = (input: string) => {
+export const getGuardPositions = (input: string) => {
   const lines = input.split("\n").map((line) => line.split(""));
 
   return getVisitedPositions(lines).flat().filter(Boolean).length;
@@ -112,7 +112,7 @@ const hasLoop = (
   }
 };
 
-export const getResultPart2 = (input: string) => {
+export const getObstructionCount = (input: string) => {
   const mapRaw = input.split("\n").map((line) => line.split(""));
 
   const map: boolean[][] = [];

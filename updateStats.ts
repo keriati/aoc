@@ -2,7 +2,7 @@ import path from "path";
 import { readdirSync, readFileSync, writeFileSync } from "fs";
 
 const YEAR_START = 2015;
-const YEAR_END = 2023;
+const YEAR_END = 2024;
 
 const getStats = () => {
   const complete = {};

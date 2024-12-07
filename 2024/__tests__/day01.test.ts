@@ -10,7 +10,7 @@ const input = `3   4
 3   3`;
 
 describe("Advent of Code 2024", () => {
-  describe("Day 01", () => {
+  describe("Day 01: Historian Hysteria", () => {
     it("returns the distance between the lists", () => {
       const actual = getListDistance(input);
 

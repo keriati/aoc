@@ -13,14 +13,14 @@ const input = `190: 10 19
 292: 11 6 16 20`;
 
 describe("Advent of Code 2024", () => {
-  describe("Day 07", () => {
-    it("returns the result", () => {
+  describe("Day 07: Bridge Repair", () => {
+    it("returns the sum of valid expressions", () => {
       const actual = getValidEquations(input);
 
       expect(actual).toBe(3749);
     });
 
-    it("returns the result - file input", () => {
+    it("returns the sum of valid expressions - file input", () => {
       const fileInput = fs.readFileSync(
         path.resolve(__dirname, "../day07.txt"),
         {
@@ -34,13 +34,13 @@ describe("Advent of Code 2024", () => {
       expect(actual).toBe(5837374519342);
     });
 
-    it("returns the result part 2", () => {
+    it("returns the sum of valid expressions with concat", () => {
       const actual = getValidEquationsWithConcat(input);
 
       expect(actual).toBe(11387);
     });
 
-    it("returns the result part 2 - file input", () => {
+    it("returns the sum of valid expressions with concat - file input", () => {
       const fileInput = fs.readFileSync(
         path.resolve(__dirname, "../day07.txt"),
         {

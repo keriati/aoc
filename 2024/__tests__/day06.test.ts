@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { getResult, getResultPart2 } from "../day06";
+import { getGuardPositions, getObstructionCount } from "../day06";
 
 const input = `....#.....
 .........#
@@ -15,13 +15,13 @@ const input = `....#.....
 
 describe("Advent of Code 2024", () => {
   describe("Day 06: Guard Gallivant", () => {
-    it("returns the result", () => {
-      const actual = getResult(input);
+    it("returns the number of positions visited by the guard", () => {
+      const actual = getGuardPositions(input);
 
       expect(actual).toBe(41);
     });
 
-    it("returns the result - file input", () => {
+    it("returns the number of positions visited by the guard - file input", () => {
       const fileInput = fs.readFileSync(
         path.resolve(__dirname, "../day06.txt"),
         {
@@ -30,18 +30,18 @@ describe("Advent of Code 2024", () => {
         }
       );
 
-      const actual = getResult(fileInput);
+      const actual = getGuardPositions(fileInput);
 
       expect(actual).toBe(4454);
     });
 
-    it("returns the result part 2", () => {
-      const actual = getResultPart2(input);
+    it("returns the number of places worth obstructing", () => {
+      const actual = getObstructionCount(input);
 
       expect(actual).toBe(6);
     });
 
-    it("returns the result part 2 - file input", () => {
+    it("returns the number of places worth obstructing - file input", () => {
       const fileInput = fs.readFileSync(
         path.resolve(__dirname, "../day06.txt"),
         {
@@ -50,7 +50,7 @@ describe("Advent of Code 2024", () => {
         }
       );
 
-      const actual = getResultPart2(fileInput);
+      const actual = getObstructionCount(fileInput);
 
       expect(actual).toBe(1503);
     });

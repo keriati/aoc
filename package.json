@@ -15,8 +15,7 @@
     "test:2021": "jest 2021",
     "test:2022": "jest 2022",
     "test:2023": "jest 2023",
-    "run201515": "ts-node ./2022/day15.run.ts",
-    "run201811": "ts-node ./2018/day11.run.ts"
+    "test:2024": "jest 2024"
   },
   "author": "Attila Kerekes",
   "license": "MIT",

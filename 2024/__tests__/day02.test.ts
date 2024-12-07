@@ -10,7 +10,7 @@ const input = `7 6 4 2 1
 1 3 6 7 9`;
 
 describe("Advent of Code 2024", () => {
-  describe("Day 02", () => {
+  describe("Day 02: Red-Nosed Reports", () => {
     it("returns the number of safe reports", () => {
       const actual = getSafeReports(input);
 
