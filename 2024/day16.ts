@@ -98,17 +98,15 @@ export const getTileCount = (input: string) => {
 
     visited.set(key, score);
 
-    if (direction === 0 && map[y - 1][x] !== "#")
+    if (direction === 0 && map[y - 1][x] !== "#") {
       queue.add([[x, y - 1, 0], score + 1, [...path, mk2n(x, y - 1)]]);
-
-    if (direction === 90 && map[y][x + 1] !== "#")
+    } else if (direction === 90 && map[y][x + 1] !== "#") {
       queue.add([[x + 1, y, 90], score + 1, [...path, mk2n(x + 1, y)]]);
-
-    if (direction === 180 && map[y + 1][x] !== "#")
+    } else if (direction === 180 && map[y + 1][x] !== "#") {
       queue.add([[x, y + 1, 180], score + 1, [...path, mk2n(x, y + 1)]]);
-
-    if (direction === 270 && map[y][x - 1] !== "#")
+    } else if (direction === 270 && map[y][x - 1] !== "#") {
       queue.add([[x - 1, y, 270], score + 1, [...path, mk2n(x - 1, y)]]);
+    }
 
     queue.add([[x, y, (direction + 90) % 360], score + 1000, [...path]]);
     queue.add([[x, y, (direction + 270) % 360], score + 1000, [...path]]);
