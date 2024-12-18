@@ -1,5 +1,7 @@
 import { mk2n } from "../util/utils";
 
+type Position = [number, number];
+
 const getMinStepsFromBytePositions = (
   mapSize: number,
   bytePositionsFull: number[],
@@ -7,10 +9,10 @@ const getMinStepsFromBytePositions = (
 ) => {
   const bytePositions = new Set(bytePositionsFull.slice(0, bytes));
 
-  const start: [number, number] = [0, 0];
-  const end: [number, number] = [mapSize, mapSize];
+  const start: Position = [0, 0];
+  const end: Position = [mapSize, mapSize];
 
-  const queue: [[number, number], number][] = [[start, 0]];
+  const queue: [Position, number][] = [[start, 0]];
   const visited = new Set<number>();
   visited.add(mk2n(start[0], start[1]));
 
