@@ -12,3 +12,10 @@ export function rotateCounterClockwise<T>(matrix: T[][]) {
     matrix.map((row) => row[row.length - 1 - index])
   );
 }
+
+export function manhattanDistance(
+  a: [number, number],
+  b: [number, number]
+): number {
+  return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]);
+}
