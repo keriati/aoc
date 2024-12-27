@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robot Emoji Canvas</title>
+  <title>Canvas</title>
   <style>
       body {
           display: flex;
@@ -218,14 +218,11 @@
   }
 
   function getRainbowColor(total, index, lightness = 50) {
-    // Calculate the hue value in the HSL color model. The hue varies from 0 to 360.
     const hue = (index / total) * 360;
-    const saturation = 100; // Set saturation to 100% for vibrant colors
+    const saturation = 100;
 
-    // Convert HSL to RGB using a helper function
     const rgb = hslToRgb(hue, saturation, lightness);
 
-    // Convert RGB to hexadecimal format
     const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
 
     return hex;
@@ -268,39 +265,21 @@
     return [];
   };
 
-  // Select the canvas and set up the rendering context
   const canvas = document.getElementById("robotCanvas");
   const ctx = canvas.getContext("2d");
 
-  // Example robot emoji
-  const box = "🎄";
-
-  // Calculate the grid size
   const gridUnits = 141;
   const canvasWidth = canvas.width;
   const canvasHeight = canvas.height;
   const cellWidth = canvasWidth / gridUnits;
   const cellHeight = canvasHeight / gridUnits;
 
-  // Function to draw a robot emoji at a specific position
-  function drawItem(x, y, item) {
-    const cx = (x * cellWidth + cellWidth / 2);
-    const cy = (y * cellHeight + cellHeight / 2);
-
-    ctx.font = `${cellHeight * 0, 9}px Arial`; // Font size scales with cell size
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(item, cx, cy);
-  }
-
-  // fcuntion that draws a box in unit size at position x,y
   function drawBox(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x * cellWidth, y * cellHeight, cellWidth, cellHeight);
   }
 
 
-  // Clear the canvas
   function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#222";
