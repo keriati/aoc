@@ -2,7 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    "jest/globals": true,
+    "vitest-globals/env": true,
   },
   extends: [
     "plugin:react/recommended",
@@ -20,7 +20,7 @@ module.exports = {
     sourceType: "module",
     project: "./tsconfig.json",
   },
-  plugins: ["react", "@typescript-eslint", "jest"],
+  plugins: ["react", "@typescript-eslint", "vitest"],
   rules: {
     "import/prefer-default-export": "off",
     "no-param-reassign": "off",
