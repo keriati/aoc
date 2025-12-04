@@ -89,7 +89,7 @@ export const createPairs = <T>(elements: T[]): [T, T][] => {
  * @param stop
  * @param step
  */
-export function range(start, stop?, step = 1) {
+export function range(start, stop?, step = 1): number[] {
   if (stop === undefined) {
     // one param defined
     stop = start;
