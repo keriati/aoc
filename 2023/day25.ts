@@ -68,11 +68,21 @@ export const getComponentGroupSizes = (input: string) => {
     }
   });
 
-  graphViz(connections).render("aoc2023d25");
+  const highlights = [];
 
   for (const [componentA, componentB] of mincut(connections)) {
     cutConnection(connectionsMap, componentA, componentB);
+    highlights.push(componentA);
+    highlights.push(componentB);
   }
+  console.log(highlights);
+
+  graphViz(connections)
+    .highlight(highlights, "#F4B183", "doublecircle")
+    // .layout("sfdp")
+    .overlap("prism1000")
+    .overlapScaling(20)
+    .render("aoc2023d25");
 
   const groups = getComponentGroups(connectionsMap);
 

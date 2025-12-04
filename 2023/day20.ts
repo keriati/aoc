@@ -209,7 +209,7 @@ export const getLowHighPulses = (input: string) => {
 export const getButtonPresses = (input: string) => {
   const system = new System(input);
 
-  // system.render();
+  system.render();
 
   while (true) {
     system.pushButton();
