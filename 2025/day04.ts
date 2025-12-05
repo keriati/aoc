@@ -1,30 +1,20 @@
+import { get8Neighbors } from "../util/utils";
+
 export const getResult = (input: string) => {
-  const lines = input.split("\n").map((line) => line.split(""));
+  const paperMap = input.split("\n").map((line) => line.split(""));
   let result = 0;
 
-  for (let y = 0; y < lines.length; y++) {
-    for (let x = 0; x < lines[y].length; x++) {
-      if (lines[y][x] === "@") {
+  for (let y = 0; y < paperMap.length; y++) {
+    for (let x = 0; x < paperMap[y].length; x++) {
+      if (paperMap[y][x] === "@") {
         let adjacentCount = 0;
 
-        for (let dy = -1; dy <= 1; dy++) {
-          for (let dx = -1; dx <= 1; dx++) {
-            if (dy === 0 && dx === 0) continue;
-
-            const newY = y + dy;
-            const newX = x + dx;
-
-            if (
-              newY >= 0 &&
-              newY < lines.length &&
-              newX >= 0 &&
-              newX < lines[y].length &&
-              lines[newY][newX] === "@"
-            ) {
-              adjacentCount++;
-            }
+        for (const [nx, ny] of get8Neighbors(paperMap, x, y)) {
+          if (paperMap[ny][nx] === "@") {
+            adjacentCount++;
           }
         }
+
         if (adjacentCount < 4) {
           result++;
         }
@@ -36,34 +26,21 @@ export const getResult = (input: string) => {
 };
 
 export const getResultPart2 = (input: string) => {
-  const lines = input.split("\n").map((line) => line.split(""));
+  const paperMap = input.split("\n").map((line) => line.split(""));
   let total = 0;
 
   while (true) {
     let result = 0;
     let removed = [];
 
-    for (let y = 0; y < lines.length; y++) {
-      for (let x = 0; x < lines[y].length; x++) {
-        if (lines[y][x] === "@") {
+    for (let y = 0; y < paperMap.length; y++) {
+      for (let x = 0; x < paperMap[y].length; x++) {
+        if (paperMap[y][x] === "@") {
           let adjacentCount = 0;
 
-          for (let dy = -1; dy <= 1; dy++) {
-            for (let dx = -1; dx <= 1; dx++) {
-              if (dy === 0 && dx === 0) continue;
-
-              const newY = y + dy;
-              const newX = x + dx;
-
-              if (
-                newY >= 0 &&
-                newY < lines.length &&
-                newX >= 0 &&
-                newX < lines[y].length &&
-                lines[newY][newX] === "@"
-              ) {
-                adjacentCount++;
-              }
+          for (const [nx, ny] of get8Neighbors(paperMap, x, y)) {
+            if (paperMap[ny][nx] === "@") {
+              adjacentCount++;
             }
           }
 
@@ -76,7 +53,7 @@ export const getResultPart2 = (input: string) => {
     }
 
     for (const [y, x] of removed) {
-      lines[y][x] = "x";
+      paperMap[y][x] = "x";
     }
 
     total += result;

@@ -17,6 +17,54 @@ export const defaultDict = (Init): DefaultDict =>
 export const ABC_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const ABC_LOWER = "abcdefghijklmnopqrstuvwxyz";
 
+export const get8Neighbors = <T>(
+  matrix: T[][],
+  x: number,
+  y: number
+): [number, number][] => {
+  const neighbors: [number, number][] = [];
+
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      const nx = x + dx;
+      const ny = y + dy;
+
+      if (dx === 0 && dy === 0) continue;
+      if (nx >= 0 && nx < matrix[0].length && ny >= 0 && ny < matrix.length) {
+        neighbors.push([nx, ny]);
+      }
+    }
+  }
+
+  return neighbors;
+};
+
+export const get4Neighbors = <T>(
+  matrix: T[][],
+  x: number,
+  y: number
+): [number, number][] => {
+  const deltas = [
+    [0, -1],
+    [1, 0],
+    [0, 1],
+    [-1, 0],
+  ];
+
+  const neighbors: [number, number][] = [];
+
+  for (const [dx, dy] of deltas) {
+    const nx = x + dx;
+    const ny = y + dy;
+
+    if (nx >= 0 && nx < matrix[0].length && ny >= 0 && ny < matrix.length) {
+      neighbors.push([nx, ny]);
+    }
+  }
+
+  return neighbors;
+};
+
 export const hexToBin = (hex: string): string =>
   hex
     .split("")
