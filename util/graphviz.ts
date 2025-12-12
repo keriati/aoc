@@ -93,6 +93,11 @@ export type GraphvizOptions = {
   pad?: number;
 };
 
+const BG_COLOR = "#0A0F1F";
+const NODE_COLOR = "#3BA7A3";
+const EDGE_COLOR = "#C7D3DD";
+const FONT_COLOR = "white";
+
 const OUT_DIR = "z_out";
 
 const DEFAULT_OPTIONS: GraphvizOptions = {
@@ -101,7 +106,7 @@ const DEFAULT_OPTIONS: GraphvizOptions = {
   layout: "neato",
   mode: "sgd",
   outputorder: "edgesfirst",
-  bgcolor: "#F7F7F7",
+  bgcolor: BG_COLOR,
   pad: 1,
 };
 
@@ -138,6 +143,7 @@ export const graphViz = <T>(
   }
 
   let highlights = [];
+  let highlightNodes = [];
 
   const render = (fileName = "", format: FileFormats = "png") => {
     fileName = fileName || `graph-${Date.now()}`;
@@ -151,9 +157,15 @@ export const graphViz = <T>(
     }
 
     // Custom global settings
-    dotString.push('edge [color="#D0D0D0"];');
+    dotString.push('edge [color="' + EDGE_COLOR + '"];');
     dotString.push(
-      'node [color="#A9D18E", style=filled, fontcolor=black, shape=circle];'
+      'node [color="' +
+        NODE_COLOR +
+        '", style=filled, fontcolor=' +
+        FONT_COLOR +
+        ', shape=circle, fillcolor="' +
+        NODE_COLOR +
+        '"];'
     );
 
     // Update nodes with highlights
@@ -168,6 +180,12 @@ export const graphViz = <T>(
           dotNodes[i] = `${node} [color="${color}" shape=${shape}];`;
         }
       }
+    }
+
+    for (const highlightNode of highlightNodes) {
+      dotString.push(
+        `${highlightNode[0]} [fontcolor="#0A0F1F" color="${highlightNode[1]}" fillcolor="${highlightNode[1]}" shape=${highlightNode[2]}];`
+      );
     }
 
     // Add nodes
@@ -200,6 +218,12 @@ export const graphViz = <T>(
     },
     highlight: (nodes: T[], color: string, shape: NodeShape = "circle") => {
       highlights.push([nodes, color, shape]);
+      return builder;
+    },
+    highlightNode: (nodes: T[], color: string, shape: NodeShape = "circle") => {
+      for (const node of nodes) {
+        highlightNodes.push([node, color, shape]);
+      }
       return builder;
     },
     render,
