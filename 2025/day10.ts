@@ -171,13 +171,13 @@ export const getResultPart2 = async (input: string) => {
   });
 
   let result = 0;
+  let { Context } = await init();
+  let Z3 = Context("main");
 
   for (const { buttons, joltages } of lines) {
-    let { Context } = await init();
-    let Z3 = Context("main");
     const optimize = new Z3.Optimize();
 
-    const presses = buttons.map((_, j) => Z3.Int.const(`${j}`));
+    const presses = buttons.map((_, j) => Z3.Int.const(`press${j}`));
 
     for (const press of presses) {
       optimize.add(press.ge(0));
@@ -204,9 +204,6 @@ export const getResultPart2 = async (input: string) => {
     for (const press of presses) {
       result += +model.get(press).toString();
     }
-
-    Z3 = null;
-    Context = null;
   }
 
   return result;

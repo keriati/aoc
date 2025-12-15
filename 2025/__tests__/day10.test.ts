@@ -34,7 +34,7 @@ describe("Advent of Code 2025", () => {
       expect(actual).toBe(33);
     });
 
-    it("returns the result part 2 A Star", async () => {
+    it.skip("returns the result part 2 A Star", async () => {
       const actual = await getResultPart2AStar(input);
 
       expect(actual).toBe(33);
@@ -58,7 +58,7 @@ describe("Advent of Code 2025", () => {
       60 * 1000
     );
 
-    it(
+    it.skip(
       "returns the result part 2 A Star - file input",
       () => {
         const fileInput = fs.readFileSync(

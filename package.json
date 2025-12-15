@@ -41,6 +41,6 @@
     "bucket-priority-queue": "2.0.0",
     "priority-queue-typed": "^2.0.0",
     "regenerator-runtime": "^0.14.1",
-    "z3-solver": "^4.12.4"
+    "z3-solver": "^4.15.4"
   }
 }
